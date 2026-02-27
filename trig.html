@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Trig Hub | MathHub Pro</title>
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Trigonometry Hub</h1>
+            <input type="number" id="angle" placeholder="Enter Angle (Degrees)">
+            <select id="func" style="width:100%; padding:15px; background:rgba(255,255,255,0.05); color:white; border:1px solid var(--border); border-radius:12px; margin-bottom:20px;">
+                <option value="sin">Sine (sin)</option>
+                <option value="cos">Cosine (cos)</option>
+                <option value="tan">Tangent (tan)</option>
+            </select>
+            <button onclick="calcTrig()">Calculate Value</button>
+            <div id="result" class="result-box">
+                <p>Value: <b id="trigVal"></b></p>
+            </div>
+            <div style="margin-top:30px; font-size:0.8rem; opacity:0.6; border-top:1px solid var(--border); padding-top:20px;">
+                <p><b>Quick Identities:</b></p>
+                <p>sin²θ + cos²θ = 1</p>
+                <p>tanθ = sinθ / cosθ</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        function calcTrig() {
+            let deg = document.getElementById('angle').value;
+            let rad = deg * (Math.PI / 180);
+            let func = document.getElementById('func').value;
+            let val = Math[func](rad);
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('trigVal').innerText = val.toFixed(4);
+        }
+    </script>
+</body>
+</html>
