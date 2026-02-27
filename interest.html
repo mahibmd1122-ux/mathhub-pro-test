@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C5KMGS6VML');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Simple Interest</h1>
+            <p style="opacity:0.6; margin-bottom:20px;">Formula: $SI = \frac{P \times R \times T}{100}$</p>
+            <input type="number" id="sip" placeholder="Principal (P)">
+            <input type="number" id="sir" placeholder="Rate (R %)">
+            <input type="number" id="sit" placeholder="Time (T) in Years">
+            <button onclick="calcSI()">Calculate Interest</button>
+            <div id="result" class="result-box">Total Interest: <b>₹<span id="siOut"></span></b></div>
+        </div>
+    </main>
+    <script>
+        function calcSI(){
+            let p = document.getElementById('sip').value;
+            let r = document.getElementById('sir').value;
+            let t = document.getElementById('sit').value;
+            document.getElementById('result').style.display='block';
+            document.getElementById('siOut').innerText = ((p * r * t)/100).toFixed(2);
+        }
+    </script>
+</body>
+</html>
