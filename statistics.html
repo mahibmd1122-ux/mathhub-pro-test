@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Stats Master | MathHub Pro</title>
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Statistics Master</h1>
+            <p style="opacity:0.6; margin-bottom:20px;">Enter numbers separated by commas:</p>
+            <input type="text" id="dataInput" placeholder="e.g. 10, 20, 20, 30">
+            <button onclick="calcStats()">Analyze Data</button>
+            <div id="result" class="result-box">
+                <p>Mean: <b id="mean"></b></p>
+                <p>Median: <b id="median"></b></p>
+            </div>
+        </div>
+    </main>
+    <script>
+        function calcStats() {
+            let input = document.getElementById('dataInput').value;
+            let arr = input.split(',').map(Number).sort((a,b) => a-b);
+            let sum = arr.reduce((a,b) => a+b, 0);
+            let mean = sum / arr.length;
+            
+            let mid = Math.floor(arr.length / 2);
+            let median = arr.length % 2 !== 0 ? arr[mid] : (arr[mid - 1] + arr[mid]) / 2;
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('mean').innerText = mean.toFixed(2);
+            document.getElementById('median').innerText = median;
+        }
+    </script>
+</body>
+</html>
