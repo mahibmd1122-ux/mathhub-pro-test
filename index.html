@@ -3,165 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathHub Pro | Elite Mathematical Portal</title>
+    <title>MathHub Pro | Elite Workspace</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date()); gtag('config', 'G-C5KMGS6VML');
+    </script>
+
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --bg: #05070a;
-            --accent: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.25);
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --card-hover: rgba(99, 102, 241, 0.1);
+        /* DRAWER SPECIFIC STYLES */
+        #sideDrawer {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Start hidden */
+            width: 280px;
+            height: 100%;
+            background: rgba(10, 15, 25, 0.98);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border);
+            z-index: 1000;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            padding: 40px 20px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        #sideDrawer.open { left: 0; }
 
-        body {
-            background-color: var(--bg);
-            color: #ffffff;
-            font-family: 'Outfit', sans-serif;
-            overflow-x: hidden;
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 900;
         }
 
-        /* --- CREATIVE ANIMATED BACKGROUND --- */
-        .bg-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: radial-gradient(circle at 0% 0%, #111827 0%, #05070a 100%);
+        .drawer-overlay.active { display: block; }
+
+        .menu-trigger {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Space Grotesk';
         }
 
-        .floating-blob {
-            position: absolute; width: 600px; height: 600px;
-            background: var(--accent-glow); filter: blur(120px);
-            border-radius: 50%; animation: drift 25s infinite alternate ease-in-out;
+        .section-title {
+            padding: 40px 8% 10px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 800;
         }
 
-        @keyframes drift {
-            0% { transform: translate(-10%, -10%); }
-            100% { transform: translate(30%, 20%); }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 8% 60px;
         }
 
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex; justify-content: space-between; padding: 1.5rem 8%;
-            backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid var(--glass-border);
+        .tool-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 24px;
+            transition: 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
         }
 
-        .logo { font-size: 1.6rem; font-weight: 800; }
-        .logo span { color: var(--accent); }
-
-        /* --- HERO --- */
-        .hero { text-align: center; padding: 120px 20px 60px; }
-        .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 4.5rem); font-family: 'Space Grotesk', sans-serif; 
-            background: linear-gradient(to bottom, #fff, #94a3b8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: rgba(99, 102, 241, 0.05);
         }
-
-        /* --- BENTO GRID SECTIONS --- */
-        .section-header { padding: 40px 8% 20px; color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; }
-
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; padding: 0 8% 60px;
-        }
-
-        .bento-item {
-            background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 28px; padding: 35px; backdrop-filter: blur(25px);
-            transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); cursor: pointer;
-        }
-
-        .bento-item:hover {
-            transform: translateY(-8px) scale(1.01);
-            background: var(--card-hover); border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .bento-item h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 12px; }
-        .bento-item p { opacity: 0.6; font-size: 0.95rem; line-height: 1.4; }
 
         .badge {
-            display: inline-block; padding: 4px 12px; border-radius: 100px;
-            background: var(--accent); font-size: 0.7rem; font-weight: 700;
-            margin-bottom: 15px; text-transform: uppercase;
+            font-size: 0.6rem;
+            background: var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: inline-block;
         }
-
-        /* Grid Spanning */
-        .wide { grid-column: span 2; }
-
-        @media (max-width: 768px) { .wide { grid-column: span 1; } }
-
     </style>
 </head>
 <body>
 
-    <div class="bg-container"><div class="floating-blob"></div></div>
+    <div class="bg-container"><div class="blob"></div></div>
 
-    <nav>
-        <div class="logo">MATH<span>HUB.PRO</span></div>
-        <div style="opacity: 0.5; font-size: 0.9rem;">Elite Edition</div>
+    <div id="sideDrawer">
+        <button class="back-btn" onclick="toggleDrawer()">CLOSE MENU &times;</button>
+        <p class="drawer-label">COMPLEX ENGINES</p>
+        <a href="quadratic.html" class="drawer-item">Quadratic Solver</a>
+        <a href="matrix.html" class="drawer-item">Matrix Calculator</a>
+        <a href="trig.html" class="drawer-item">Trig Identities</a>
+        <a href="calculus.html" class="drawer-item">Calculus Lab</a>
+        <a href="statistics.html" class="drawer-item">Statistics Pro</a>
+        <a href="geometry.html" class="drawer-item">Geometry Engine</a>
+        
+        <p class="drawer-label" style="margin-top:20px;">ACADEMICS</p>
+        <a href="class10.html" class="drawer-item">Class 10 Portal</a>
+        <a href="class11.html" class="drawer-item">Class 11 Hub</a>
+        <a href="class12.html" class="drawer-item">Class 12 Hub</a>
+    </div>
+    <div class="drawer-overlay" onclick="toggleDrawer()"></div>
+
+    <nav style="padding: 20px 8%; display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo" style="font-size: 1.5rem; font-weight: 800; font-family: 'Space Grotesk';">MATH<span>HUB.PRO</span></div>
+        <button class="menu-trigger" onclick="toggleDrawer()">☰ ADVANCED TOOLS</button>
     </nav>
 
-    <header class="hero">
-        <h1>Creative. Precise. <br>Professional.</h1>
-        <p>Your 100-Score Mathematical Resource Suite.</p>
-    </header>
-
-    <div class="section-header">Common Maths Tools</div>
-    <div class="bento-grid">
-        <div class="bento-item">
-            <h3>Age Calculator</h3>
-            <p>Precise birth-to-second calculations with leap year support.</p>
-        </div>
-        <div class="bento-item">
-            <h3>Currency Converter</h3>
-            <p>Real-time exchange rates for global commerce.</p>
-        </div>
-        <div class="bento-item wide">
-            <h3>Advanced Unit Converter</h3>
-            <p>From pressure and volume to temperature and length. All in one place.</p>
-        </div>
-        <div class="bento-item">
-            <h3>Percentage Calc</h3>
-            <p>Fast discount, markup, and ratio calculations.</p>
-        </div>
+    <main>
+        <div style="padding: 60px 8% 20px;">
+            <h1 style="font-family: 'Space Grotesk'; font-size: 3rem;">Elite Workspace.</h1>
+            <p style="opacity: 0.5;">Select a module to begin your precise calculation.</p>
         </div>
 
-    <div class="section-header">Academic Power Tools (New)</div>
-    <div class="bento-grid">
-        <div class="bento-item wide">
-            <span class="badge">Advanced</span>
-            <h3>Quadratic Pro Solver</h3>
-            <p>Solve $ax^2 + bx + c = 0$ with step-by-step discriminant and vertex plotting.</p>
+        <div class="section-title">Academic Materials</div>
+        <div class="grid-container">
+            <a href="class10-weightage.html" class="tool-card"><h3>Board Weightage</h3><p>Marks distribution 2026.</p></a>
+            <a href="class10-formulas.html" class="tool-card"><h3>Math Cheat Sheet</h3><p>All formulas for Class 10.</p></a>
         </div>
-        <div class="bento-item">
-            <span class="badge">CBSE Class 10</span>
-            <h3>HCF & LCM Master</h3>
-            <p>Prime factorization method for up to 5 numbers simultaneously.</p>
-        </div>
-        <div class="bento-item">
-            <span class="badge">Trigonometry</span>
-            <h3>Identity Verifier</h3>
-            <p>Check $\sin^2\theta + \cos^2\theta = 1$ and other proofs visually.</p>
-        </div>
-    </div>
 
-    <div class="section-header">Study Hub</div>
-    <div class="bento-grid">
-        <div class="bento-item">
-            <span class="badge">Exam Prep</span>
-            <h3>Chapter Weightage</h3>
-            <p>Interactive graph showing marks distribution for 2026 Board Exams.</p>
+        <div class="section-title">Utility Calculators</div>
+        <div class="grid-container">
+            <a href="age.html" class="tool-card"><span class="badge">Popular</span><h3>Age Calc</h3><p>Birth-to-second tracking.</p></a>
+            <a href="bmi.html" class="tool-card"><h3>BMI Tracker</h3><p>Health analytics.</p></a>
+            <a href="currency.html" class="tool-card"><h3>Currency</h3><p>Live Forex rates.</p></a>
+            <a href="percentage.html" class="tool-card"><h3>Percentage</h3><p>Growth & ratios.</p></a>
+            <a href="unit.html" class="tool-card"><h3>Unit Converter</h3><p>Mass & Volume.</p></a>
+            <a href="gst.html" class="tool-card"><h3>GST Calc</h3><p>Taxation simplified.</p></a>
+            
+            <a href="discount.html" class="tool-card"><h3>Discount</h3><p>Shopping savings.</p></a>
+            <a href="compound.html" class="tool-card"><h3>Compound Int.</h3><p>Investment growth.</p></a>
+            <a href="loan.html" class="tool-card"><h3>Loan EMI</h3><p>Monthly repayments.</p></a>
+            <a href="probability.html" class="tool-card"><h3>Probability</h3><p>Stats & Odds.</p></a>
+            <a href="fraction.html" class="tool-card"><h3>Fraction Calc</h3><p>Arithmetic with steps.</p></a>
+            <a href="roman.html" class="tool-card"><h3>Roman Numerals</h3><p>Number conversion.</p></a>
+            <a href="binary.html" class="tool-card"><h3>Binary Master</h3><p>Dec, Hex, and Octal.</p></a>
+            <a href="scientific.html" class="tool-card"><h3>Scientific</h3><p>Advanced functions.</p></a>
+            <a href="prime.html" class="tool-card"><h3>Prime Factor</h3><p>Number analysis.</p></a>
+            <a href="linear.html" class="tool-card"><h3>Linear Eq</h3><p>Solve for $x$ and $y$.</p></a>
+            <a href="ohm.html" class="tool-card"><h3>Ohm's Law</h3><p>Physics utility.</p></a>
+            <a href="time.html" class="tool-card"><h3>Work & Time</h3><p>Efficiency logic.</p></a>
+            <a href="temp.html" class="tool-card"><h3>Temperature</h3><p>C to F conversion.</p></a>
+            <a href="surface.html" class="tool-card"><h3>Surface Area</h3><p>2D shape area.</p></a>
+            <a href="volume.html" class="tool-card"><h3>Volume Engine</h3><p>3D capacity.</p></a>
         </div>
-        <div class="bento-item wide">
-            <span class="badge">Quick Revision</span>
-            <h3>Formula Cheat Sheet</h3>
-            <p>One-page "Elite" summaries for Algebra, Geometry, and Calculus.</p>
-        </div>
-    </div>
+    </main>
 
+    <script>
+        function toggleDrawer() {
+            document.getElementById('sideDrawer').classList.toggle('open');
+            document.querySelector('.drawer-overlay').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
