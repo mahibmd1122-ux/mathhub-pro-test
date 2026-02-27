@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temp Converter | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C5KMGS6VML');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Temp Converter</h1>
+            <input type="number" id="tc" placeholder="Celsius (°C)">
+            <button onclick="convT()">Convert to Fahrenheit</button>
+            <div id="result" class="result-box">Result: <b id="tOut"></b> °F</div>
+        </div>
+    </main>
+    <script>
+        function convT(){
+            let c = document.getElementById('tc').value;
+            document.getElementById('result').style.display='block';
+            document.getElementById('tOut').innerText = ((c * 9/5) + 32).toFixed(1);
+        }
+    </script>
+</body>
+</html>
