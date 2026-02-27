@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohm's Law | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C5KMGS6VML');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Ohm's Law Solver</h1>
+            <p style="opacity:0.6; margin-bottom:20px;">Formula: $V = I \times R$</p>
+            <input type="number" id="cur" placeholder="Current (I) in Amps">
+            <input type="number" id="res" placeholder="Resistance (R) in Ohms">
+            <button onclick="calcV()">Calculate Voltage</button>
+            <div id="result" class="result-box">Voltage (V): <b id="vOut"></b> Volts</div>
+        </div>
+    </main>
+    <script>
+        function calcV(){
+            let i = document.getElementById('cur').value;
+            let r = document.getElementById('res').value;
+            document.getElementById('result').style.display='block';
+            document.getElementById('vOut').innerText = (i * r).toFixed(2);
+        }
+    </script>
+</body>
+</html>
