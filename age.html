@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date()); gtag('config', 'G-C5KMGS6VML');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Age Calculator</h1>
+            <input type="date" id="dob" style="width:100%; padding:15px; background:rgba(255,255,255,0.05); color:white; border:1px solid var(--border); border-radius:12px; margin-bottom:20px;">
+            <button onclick="calcAge()">FIND MY AGE</button>
+            <div id="result" class="result-box"><p id="ageOutput"></p></div>
+        </div>
+    </main>
+    <script>
+        function calcAge() {
+            let dob = new Date(document.getElementById('dob').value);
+            let diff = Date.now() - dob.getTime();
+            let ageDate = new Date(diff);
+            let age = Math.abs(ageDate.getUTCFullYear() - 1970);
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('ageOutput').innerHTML = "You are <b>" + age + "</b> years old.";
+        }
+    </script>
+</body>
+</html>
