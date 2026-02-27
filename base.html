@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Converter | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C5KMGS6VML');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Base Converter</h1>
+            <input type="number" id="dec" placeholder="Decimal Number">
+            <button onclick="convBase()">To Binary & Hex</button>
+            <div id="result" class="result-box">
+                <p>Binary: <b id="bin"></b></p>
+                <p>Hex: <b id="hex"></b></p>
+            </div>
+        </div>
+    </main>
+    <script>
+        function convBase(){
+            let d = parseInt(document.getElementById('dec').value);
+            document.getElementById('result').style.display='block';
+            document.getElementById('bin').innerText = d.toString(2);
+            document.getElementById('hex').innerText = d.toString(16).toUpperCase();
+        }
+    </script>
+</body>
+</html>
