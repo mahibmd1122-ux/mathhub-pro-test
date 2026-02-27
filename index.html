@@ -3,173 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathHub Pro | Elite Workspace</title>
-    
+    <title>MathHub Pro | Dashboard</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date()); gtag('config', 'G-C5KMGS6VML');
-    </script>
-
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C5KMGS6VML');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
     <style>
-        /* DRAWER SPECIFIC STYLES */
-        #sideDrawer {
-            position: fixed;
-            top: 0;
-            left: -300px; /* Start hidden */
-            width: 280px;
-            height: 100%;
-            background: rgba(10, 15, 25, 0.98);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid var(--border);
-            z-index: 1000;
-            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-            padding: 40px 20px;
+        :root {
+            --sidebar-collapsed: 60px;
+            --sidebar-expanded: 260px;
+            --accent-purple: #8a2be2;
         }
 
-        #sideDrawer.open { left: 0; }
-
-        .drawer-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            z-index: 900;
-        }
-
-        .drawer-overlay.active { display: block; }
-
-        .menu-trigger {
-            background: var(--glass);
-            border: 1px solid var(--border);
+        body {
+            display: flex;
+            background: #0d0d0f;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
             color: white;
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            font-family: 'Space Grotesk';
         }
 
-        .section-title {
-            padding: 40px 8% 10px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 800;
+        /* --- CLOUDFLARE STYLE SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-collapsed);
+            height: 100vh;
+            background: #16161a;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            position: fixed;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
         }
 
-        .grid-container {
+        .sidebar:hover {
+            width: var(--sidebar-expanded);
+        }
+
+        .favicon-container {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .favicon-container img {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+        }
+
+        .brand-name {
+            margin-left: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: 0.2s;
+        }
+
+        .sidebar:hover .brand-name { opacity: 1; }
+
+        .nav-items { margin-top: 20px; flex-grow: 1; }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: #888;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover { color: white; background: rgba(138, 43, 226, 0.1); }
+        .nav-item i { min-width: 24px; font-style: normal; font-size: 1.2rem; }
+        .nav-label { margin-left: 20px; opacity: 0; transition: 0.2s; }
+        .sidebar:hover .nav-label { opacity: 1; }
+
+        /* --- MAIN LAYOUT --- */
+        .main-wrapper {
+            margin-left: var(--sidebar-collapsed);
+            flex-grow: 1;
+            padding: 40px;
+            transition: margin-left 0.3s;
+        }
+
+        .tool-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            padding: 0 8% 60px;
         }
 
         .tool-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
             padding: 25px;
-            border-radius: 24px;
-            transition: 0.3s;
-            cursor: pointer;
+            border-radius: 12px;
+            text-align: center;
             text-decoration: none;
-            color: white;
+            color: #ccc;
+            transition: 0.3s;
         }
 
         .tool-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            background: rgba(99, 102, 241, 0.05);
+            background: rgba(138, 43, 226, 0.05);
+            border-color: var(--accent-purple);
+            color: white;
+            transform: translateY(-3px);
         }
 
-        .badge {
-            font-size: 0.6rem;
-            background: var(--accent);
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            display: inline-block;
+        /* --- EVERY 8 TOOLS BLAH SECTION --- */
+        .blah-section {
+            grid-column: 1 / -1;
+            background: linear-gradient(90deg, #16161a, #1c1c22);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 20px 0;
+            border: 1px dashed rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .blah-section h3 { color: var(--accent-purple); margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .sidebar { width: 0; }
+            .main-wrapper { margin-left: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-container"><div class="blob"></div></div>
-
-    <div id="sideDrawer">
-        <button class="back-btn" onclick="toggleDrawer()">CLOSE MENU &times;</button>
-        <p class="drawer-label">COMPLEX ENGINES</p>
-        <a href="quadratic.html" class="drawer-item">Quadratic Solver</a>
-        <a href="matrix.html" class="drawer-item">Matrix Calculator</a>
-        <a href="trig.html" class="drawer-item">Trig Identities</a>
-        <a href="calculus.html" class="drawer-item">Calculus Lab</a>
-        <a href="statistics.html" class="drawer-item">Statistics Pro</a>
-        <a href="geometry.html" class="drawer-item">Geometry Engine</a>
+    <nav class="sidebar">
+        <div class="favicon-container">
+            <img src="favicon.ico" alt="Logo"> <span class="brand-name">MathHub Pro</span>
+        </div>
         
-        <p class="drawer-label" style="margin-top:20px;">ACADEMICS</p>
-        <a href="class10.html" class="drawer-item">Class 10 Portal</a>
-        <a href="class11.html" class="drawer-item">Class 11 Hub</a>
-        <a href="class12.html" class="drawer-item">Class 12 Hub</a>
-    </div>
-    <div class="drawer-overlay" onclick="toggleDrawer()"></div>
-
-    <nav style="padding: 20px 8%; display: flex; justify-content: space-between; align-items: center;">
-        <div class="logo" style="font-size: 1.5rem; font-weight: 800; font-family: 'Space Grotesk';">MATH<span>HUB.PRO</span></div>
-        <button class="menu-trigger" onclick="toggleDrawer()">☰ ADVANCED TOOLS</button>
+        <div class="nav-items">
+            <a href="class10.html" class="nav-item"><i>🔟</i> <span class="nav-label">Class 10 Portal</span></a>
+            <a href="class11.html" class="nav-item"><i>🧪</i> <span class="nav-label">Class 11 Hub</span></a>
+            <a href="class12.html" class="nav-item"><i>🎓</i> <span class="nav-label">Class 12 Advanced</span></a>
+            <div style="height: 1px; background: rgba(255,255,255,0.05); margin: 15px 0;"></div>
+            <a href="quadratic.html" class="nav-item"><i>f(x)</i> <span class="nav-label">Quadratic Solver</span></a>
+            <a href="matrix.html" class="nav-item"><i>[M]</i> <span class="nav-label">Matrix Engine</span></a>
+            <a href="calculus.html" class="nav-item"><i>∫dx</i> <span class="nav-label">Calculus Lab</span></a>
+            <a href="trig.html" class="nav-item"><i>⊿</i> <span class="nav-label">Trigonometry</span></a>
+            <a href="log.html" class="nav-item"><i>log</i> <span class="nav-label">Log Solver</span></a>
+            <a href="base.html" class="nav-item"><i>01</i> <span class="nav-label">Base Converter</span></a>
+            <a href="contact.html" class="nav-item"><i>✉</i> <span class="nav-label">Support</span></a>
+        </div>
     </nav>
 
-    <main>
-        <div style="padding: 60px 8% 20px;">
-            <h1 style="font-family: 'Space Grotesk'; font-size: 3rem;">Elite Workspace.</h1>
-            <p style="opacity: 0.5;">Select a module to begin your precise calculation.</p>
-        </div>
+    <div class="main-wrapper">
+        <header style="margin-bottom: 40px;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Cloud Dashboard</h1>
+            <p style="color: #666;">Select a computation module from the network.</p>
+        </header>
 
-        <div class="section-title">Academic Materials</div>
-        <div class="grid-container">
-            <a href="class10-weightage.html" class="tool-card"><h3>Board Weightage</h3><p>Marks distribution 2026.</p></a>
-            <a href="class10-formulas.html" class="tool-card"><h3>Math Cheat Sheet</h3><p>All formulas for Class 10.</p></a>
-        </div>
+        <div class="tool-grid">
+            <a href="age.html" class="tool-card"><h3>Age Calc</h3></a>
+            <a href="bmi.html" class="tool-card"><h3>BMI Tracker</h3></a>
+            <a href="currency.html" class="tool-card"><h3>Forex</h3></a>
+            <a href="percentage.html" class="tool-card"><h3>Percentage</h3></a>
+            <a href="gst.html" class="tool-card"><h3>GST Calc</h3></a>
+            <a href="discount.html" class="tool-card"><h3>Discount</h3></a>
+            <a href="interest.html" class="tool-card"><h3>Simple Interest</h3></a>
+            <a href="compound.html" class="tool-card"><h3>Compound Int.</h3></a>
 
-        <div class="section-title">Utility Calculators</div>
-        <div class="grid-container">
-            <a href="age.html" class="tool-card"><span class="badge">Popular</span><h3>Age Calc</h3><p>Birth-to-second tracking.</p></a>
-            <a href="bmi.html" class="tool-card"><h3>BMI Tracker</h3><p>Health analytics.</p></a>
-            <a href="currency.html" class="tool-card"><h3>Currency</h3><p>Live Forex rates.</p></a>
-            <a href="percentage.html" class="tool-card"><h3>Percentage</h3><p>Growth & ratios.</p></a>
-            <a href="unit.html" class="tool-card"><h3>Unit Converter</h3><p>Mass & Volume.</p></a>
-            <a href="gst.html" class="tool-card"><h3>GST Calc</h3><p>Taxation simplified.</p></a>
-            
-            <a href="discount.html" class="tool-card"><h3>Discount</h3><p>Shopping savings.</p></a>
-            <a href="compound.html" class="tool-card"><h3>Compound Int.</h3><p>Investment growth.</p></a>
-            <a href="loan.html" class="tool-card"><h3>Loan EMI</h3><p>Monthly repayments.</p></a>
-            <a href="probability.html" class="tool-card"><h3>Probability</h3><p>Stats & Odds.</p></a>
-            <a href="fraction.html" class="tool-card"><h3>Fraction Calc</h3><p>Arithmetic with steps.</p></a>
-            <a href="roman.html" class="tool-card"><h3>Roman Numerals</h3><p>Number conversion.</p></a>
-            <a href="binary.html" class="tool-card"><h3>Binary Master</h3><p>Dec, Hex, and Octal.</p></a>
-            <a href="scientific.html" class="tool-card"><h3>Scientific</h3><p>Advanced functions.</p></a>
-            <a href="prime.html" class="tool-card"><h3>Prime Factor</h3><p>Number analysis.</p></a>
-            <a href="linear.html" class="tool-card"><h3>Linear Eq</h3><p>Solve for $x$ and $y$.</p></a>
-            <a href="ohm.html" class="tool-card"><h3>Ohm's Law</h3><p>Physics utility.</p></a>
-            <a href="time.html" class="tool-card"><h3>Work & Time</h3><p>Efficiency logic.</p></a>
-            <a href="temp.html" class="tool-card"><h3>Temperature</h3><p>C to F conversion.</p></a>
-            <a href="surface.html" class="tool-card"><h3>Surface Area</h3><p>2D shape area.</p></a>
-            <a href="volume.html" class="tool-card"><h3>Volume Engine</h3><p>3D capacity.</p></a>
-        </div>
-    </main>
+            <div class="blah-section">
+                <h3>Global Analytics & Ad Unit 01</h3>
+                <p>Welcome to your .com expansion. This area is optimized for revenue and SEO descriptions. Blah blah blah.</p>
+            </div>
 
-    <script>
-        function toggleDrawer() {
-            document.getElementById('sideDrawer').classList.toggle('open');
-            document.querySelector('.drawer-overlay').classList.toggle('active');
-        }
-    </script>
+            <a href="loan.html" class="tool-card"><h3>EMI Loan</h3></a>
+            <a href="probability.html" class="tool-card"><h3>Probability</h3></a>
+            <a href="unit.html" class="tool-card"><h3>Unit Conv.</h3></a>
+            <a href="physics.html" class="tool-card"><h3>Ohm's Law</h3></a>
+            <a href="roman.html" class="tool-card"><h3>Roman Numerals</h3></a>
+            <a href="prime.html" class="tool-card"><h3>Prime Checker</h3></a>
+            <a href="factorial.html" class="tool-card"><h3>Factorial</h3></a>
+            <a href="temp.html" class="tool-card"><h3>Temperature</h3></a>
+
+            <div class="blah-section">
+                <h3>System Performance & Ad Unit 02</h3>
+                <p>Secondary information layer. Academic resources for Class 10, 11, and 12 are now live. Blah blah blah.</p>
+            </div>
+
+            <a href="time.html" class="tool-card"><h3>Time Units</h3></a>
+            <a href="age-seconds.html" class="tool-card"><h3>Life in Seconds</h3></a>
+            <a href="roots.html" class="tool-card"><h3>Square/Cube</h3></a>
+            <a href="fraction.html" class="tool-card"><h3>Fractions</h3></a>
+            <a href="statistics.html" class="tool-card"><h3>Statistics</h3></a>
+            <a href="geometry.html" class="tool-card"><h3>3D Volume</h3></a>
+            <a href="class10-weightage.html" class="tool-card"><h3>Marking Scheme</h3></a>
+            <a href="class10-formulas.html" class="tool-card"><h3>Cheat Sheet</h3></a>
+        </div>
+    </div>
+
 </body>
 </html>
