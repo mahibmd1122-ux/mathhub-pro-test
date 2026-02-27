@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Matrix Engine | MathHub Pro</title>
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Matrix Engine (2x2)</h1>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom:20px;">
+                <input type="number" id="m1" placeholder="a">
+                <input type="number" id="m2" placeholder="b">
+                <input type="number" id="m3" placeholder="c">
+                <input type="number" id="m4" placeholder="d">
+            </div>
+            <button onclick="calcMatrix()">Calculate Determinant</button>
+            <div id="result" class="result-box">
+                <p>Determinant |A| = <b id="matRes"></b></p>
+            </div>
+        </div>
+    </main>
+    <script>
+        function calcMatrix() {
+            let a = document.getElementById('m1').value;
+            let b = document.getElementById('m2').value;
+            let c = document.getElementById('m3').value;
+            let d = document.getElementById('m4').value;
+            let det = (a * d) - (b * c);
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('matRes').innerText = det;
+        }
+    </script>
+</body>
+</html>
