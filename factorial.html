@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Engine | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C5KMGS6VML');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>Factorial Engine</h1>
+            <input type="number" id="fn" placeholder="Enter n (e.g. 5)">
+            <button onclick="calcF()">Solve n!</button>
+            <div id="result" class="result-box">Result: <b id="fOut"></b></div>
+        </div>
+    </main>
+    <script>
+        function calcF(){
+            let n = parseInt(document.getElementById('fn').value);
+            let r = 1;
+            for(let i=1; i<=n; i++) r *= i;
+            document.getElementById('result').style.display='block';
+            document.getElementById('fOut').innerText = r;
+        }
+    </script>
+</body>
+</html>
