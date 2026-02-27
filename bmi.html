@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Tracker | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date()); gtag('config', 'G-C5KMGS6VML');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>BMI Tracker</h1>
+            <input type="number" id="w" placeholder="Weight (kg)">
+            <input type="number" id="h" placeholder="Height (cm)">
+            <button onclick="calcBMI()">CALCULATE BMI</button>
+            <div id="result" class="result-box"><p id="bmiOutput"></p></div>
+        </div>
+    </main>
+    <script>
+        function calcBMI() {
+            let weight = parseFloat(document.getElementById('w').value);
+            let height = parseFloat(document.getElementById('h').value) / 100;
+            let bmi = (weight / (height * height)).toFixed(1);
+            let status = bmi < 18.5 ? "Underweight" : bmi < 24.9 ? "Healthy" : "Overweight";
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('bmiOutput').innerHTML = "BMI: <b>" + bmi + "</b> (" + status + ")";
+        }
+    </script>
+</body>
+</html>
