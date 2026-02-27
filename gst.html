@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Calculator | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C5KMGS6VML');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container"><div class="blob"></div></div>
+    <aside><a href="index.html" class="back-btn">← EXIT TO HUB</a></aside>
+    <main>
+        <div class="workspace-card">
+            <h1>GST Calculator</h1>
+            <input type="number" id="base" placeholder="Amount (₹)">
+            <select id="rate" style="width:100%; padding:15px; background:rgba(255,255,255,0.05); color:white; border:1px solid var(--border); border-radius:12px; margin-bottom:20px;">
+                <option value="5">5% GST</option>
+                <option value="12">12% GST</option>
+                <option value="18">18% GST</option>
+                <option value="28">28% GST</option>
+            </select>
+            <button onclick="gst()">Apply GST</button>
+            <div id="result" class="result-box">Total Price: <b>₹<span id="gOut"></span></b></div>
+        </div>
+    </main>
+    <script>
+        function gst(){
+            let b = parseFloat(document.getElementById('base').value);
+            let r = parseFloat(document.getElementById('rate').value);
+            document.getElementById('result').style.display='block';
+            document.getElementById('gOut').innerText = (b + (b * r/100)).toFixed(2);
+        }
+    </script>
+</body>
+</html>
