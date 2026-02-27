@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quadratic Solver | MathHub Pro</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5KMGS6VML"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date()); gtag('config', 'G-C5KMGS6VML');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="bg-container"><div class="blob"></div></div>
@@ -11,14 +19,12 @@
     <main>
         <div class="workspace-card">
             <h1>Quadratic Solver</h1>
-            <p style="opacity:0.6; margin-bottom:20px;">Format: ax² + bx + c = 0</p>
-            <input type="number" id="qa" placeholder="Enter value of a">
-            <input type="number" id="qb" placeholder="Enter value of b">
-            <input type="number" id="qc" placeholder="Enter value of c">
-            <button onclick="solveQuad()">Solve Equation</button>
-            <div id="result" class="result-box">
-                <p id="resText"></p>
-            </div>
+            <p style="opacity:0.6; margin-bottom:20px;">Solve equations: $ax^2 + bx + c = 0$</p>
+            <input type="number" id="qa" placeholder="Value of a">
+            <input type="number" id="qb" placeholder="Value of b">
+            <input type="number" id="qc" placeholder="Value of c">
+            <button onclick="solveQuad()">FIND ROOTS</button>
+            <div id="result" class="result-box"><p id="resText"></p></div>
         </div>
     </main>
     <script>
@@ -27,15 +33,14 @@
             let b = parseFloat(document.getElementById('qb').value);
             let c = parseFloat(document.getElementById('qc').value);
             let d = (b * b) - (4 * a * c);
-            let res = document.getElementById('result');
-            res.style.display = "block";
+            document.getElementById('result').style.display = "block";
             if (d > 0) {
                 let r1 = (-b + Math.sqrt(d)) / (2 * a);
                 let r2 = (-b - Math.sqrt(d)) / (2 * a);
-                document.getElementById('resText').innerHTML = `Two Real Roots:<br><b>x1 = ${r1.toFixed(2)}</b><br><b>x2 = ${r2.toFixed(2)}</b>`;
+                document.getElementById('resText').innerHTML = `Two Real Roots:<br><b>x1: ${r1.toFixed(2)}</b><br><b>x2: ${r2.toFixed(2)}</b>`;
             } else if (d == 0) {
                 let r = -b / (2 * a);
-                document.getElementById('resText').innerHTML = `One Real Root:<br><b>x = ${r.toFixed(2)}</b>`;
+                document.getElementById('resText').innerHTML = `Unique Root:<br><b>x: ${r.toFixed(2)}</b>`;
             } else {
                 document.getElementById('resText').innerHTML = "<b>Roots are Complex/Imaginary</b>";
             }
