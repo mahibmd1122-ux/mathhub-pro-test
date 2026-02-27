@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathHub Pro | Elite Mathematical Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.25);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-hover: rgba(99, 102, 241, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- CREATIVE ANIMATED BACKGROUND --- */
+        .bg-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 0% 0%, #111827 0%, #05070a 100%);
+        }
+
+        .floating-blob {
+            position: absolute; width: 600px; height: 600px;
+            background: var(--accent-glow); filter: blur(120px);
+            border-radius: 50%; animation: drift 25s infinite alternate ease-in-out;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(-10%, -10%); }
+            100% { transform: translate(30%, 20%); }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; padding: 1.5rem 8%;
+            backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 800; }
+        .logo span { color: var(--accent); }
+
+        /* --- HERO --- */
+        .hero { text-align: center; padding: 120px 20px 60px; }
+        .hero h1 { 
+            font-size: clamp(2.5rem, 8vw, 4.5rem); font-family: 'Space Grotesk', sans-serif; 
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* --- BENTO GRID SECTIONS --- */
+        .section-header { padding: 40px 8% 20px; color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; }
+
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; padding: 0 8% 60px;
+        }
+
+        .bento-item {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            border-radius: 28px; padding: 35px; backdrop-filter: blur(25px);
+            transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); cursor: pointer;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-8px) scale(1.01);
+            background: var(--card-hover); border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .bento-item h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 12px; }
+        .bento-item p { opacity: 0.6; font-size: 0.95rem; line-height: 1.4; }
+
+        .badge {
+            display: inline-block; padding: 4px 12px; border-radius: 100px;
+            background: var(--accent); font-size: 0.7rem; font-weight: 700;
+            margin-bottom: 15px; text-transform: uppercase;
+        }
+
+        /* Grid Spanning */
+        .wide { grid-column: span 2; }
+
+        @media (max-width: 768px) { .wide { grid-column: span 1; } }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-container"><div class="floating-blob"></div></div>
+
+    <nav>
+        <div class="logo">MATH<span>HUB.PRO</span></div>
+        <div style="opacity: 0.5; font-size: 0.9rem;">Elite Edition</div>
+    </nav>
+
+    <header class="hero">
+        <h1>Creative. Precise. <br>Professional.</h1>
+        <p>Your 100-Score Mathematical Resource Suite.</p>
+    </header>
+
+    <div class="section-header">Common Maths Tools</div>
+    <div class="bento-grid">
+        <div class="bento-item">
+            <h3>Age Calculator</h3>
+            <p>Precise birth-to-second calculations with leap year support.</p>
+        </div>
+        <div class="bento-item">
+            <h3>Currency Converter</h3>
+            <p>Real-time exchange rates for global commerce.</p>
+        </div>
+        <div class="bento-item wide">
+            <h3>Advanced Unit Converter</h3>
+            <p>From pressure and volume to temperature and length. All in one place.</p>
+        </div>
+        <div class="bento-item">
+            <h3>Percentage Calc</h3>
+            <p>Fast discount, markup, and ratio calculations.</p>
+        </div>
+        </div>
+
+    <div class="section-header">Academic Power Tools (New)</div>
+    <div class="bento-grid">
+        <div class="bento-item wide">
+            <span class="badge">Advanced</span>
+            <h3>Quadratic Pro Solver</h3>
+            <p>Solve $ax^2 + bx + c = 0$ with step-by-step discriminant and vertex plotting.</p>
+        </div>
+        <div class="bento-item">
+            <span class="badge">CBSE Class 10</span>
+            <h3>HCF & LCM Master</h3>
+            <p>Prime factorization method for up to 5 numbers simultaneously.</p>
+        </div>
+        <div class="bento-item">
+            <span class="badge">Trigonometry</span>
+            <h3>Identity Verifier</h3>
+            <p>Check $\sin^2\theta + \cos^2\theta = 1$ and other proofs visually.</p>
+        </div>
+    </div>
+
+    <div class="section-header">Study Hub</div>
+    <div class="bento-grid">
+        <div class="bento-item">
+            <span class="badge">Exam Prep</span>
+            <h3>Chapter Weightage</h3>
+            <p>Interactive graph showing marks distribution for 2026 Board Exams.</p>
+        </div>
+        <div class="bento-item wide">
+            <span class="badge">Quick Revision</span>
+            <h3>Formula Cheat Sheet</h3>
+            <p>One-page "Elite" summaries for Algebra, Geometry, and Calculus.</p>
+        </div>
+    </div>
+
+</body>
+</html>
