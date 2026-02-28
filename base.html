@@ -24,3 +24,49 @@
         .seo-terminal { margin-top: 40px; border-top: 1px solid #333; padding-top: 25px; color: #888; font-size: 0.95rem; line-height: 1.8; }
         .seo-terminal b { color: var(--neon-cyan); }
     </style>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">[ RETURN_TO_HUB ]</a>
+        <h1>BASE SWITCHER</h1>
+        <div class="input-group">
+            <label>INPUT VALUE</label>
+            <input type="text" id="val" placeholder="e.g. FF">
+        </div>
+        <div class="input-group">
+            <label>FROM BASE</label>
+            <select id="from" style="width:100%; padding:15px; background:#000; color:#fff; border:1px solid var(--neon-purple);">
+                <option value="10">Decimal (10)</option>
+                <option value="16">Hex (16)</option>
+                <option value="8">Octal (8)</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>TO BASE</label>
+            <select id="to" style="width:100%; padding:15px; background:#000; color:#fff; border:1px solid var(--neon-purple);">
+                <option value="16">Hex (16)</option>
+                <option value="10">Decimal (10)</option>
+                <option value="2">Binary (2)</option>
+            </select>
+        </div>
+        <button class="calc-btn" onclick="calc()">SWITCH BASE</button>
+        <div class="result-box" id="rb">
+            <label>CONVERTED DATA:</label>
+            <span class="big-output" id="out">--</span>
+        </div>
+        <div class="seo-terminal">
+            <h2>Hex/Octal/Decimal Converter</h2>
+            <p>Master <b>Number System conversions</b> for technical competitive exams. The MathHub Base Switcher handles Hexadecimal to Binary and Decimal to Octal with 100% fidelity.</p>
+        </div>
+    </div>
+    <script>
+        function calc() {
+            let v = document.getElementById('val').value;
+            let f = parseInt(document.getElementById('from').value);
+            let t = parseInt(document.getElementById('to').value);
+            let res = parseInt(v, f).toString(t).toUpperCase();
+            document.getElementById('out').innerText = res;
+            document.getElementById('rb').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
