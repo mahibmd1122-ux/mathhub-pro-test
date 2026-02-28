@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MathHub Pro | Elite Performance Toolkit</title>
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1000&q=80">
+
     <style>
         :root {
             --neon-cyan: #00f2ff;
@@ -30,8 +36,11 @@
             position: fixed; transition: 0.4s; z-index: 1000; overflow: hidden; backdrop-filter: blur(15px);
         }
         .sidebar:hover { width: 260px; box-shadow: 10px 0 30px rgba(0, 242, 255, 0.2); }
-        .side-logo { padding: 20px; border-bottom: 1px solid var(--border); text-align: center; }
-        .side-logo img { width: 40px; filter: drop-shadow(0 0 8px var(--neon-cyan)); }
+        .side-logo { padding: 20px; border-bottom: 1px solid var(--border); text-align: center; background: rgba(0,0,0,0.5); }
+        /* Main Logo Styling */
+        .side-logo img { width: 50px; border-radius: 10px; filter: drop-shadow(0 0 10px var(--neon-cyan)); transition: 0.3s; }
+        .sidebar:hover .side-logo img { width: 80px; }
+        
         .nav-item { display: flex; align-items: center; padding: 20px; text-decoration: none; color: #888; transition: 0.3s; white-space: nowrap; }
         .nav-item:hover { color: var(--neon-cyan); background: rgba(0, 242, 255, 0.1); }
         .nav-label { margin-left: 25px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 1px; opacity: 0; }
@@ -40,43 +49,55 @@
         /* --- HERO --- */
         .hero {
             margin-left: 70px; height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            border-bottom: 2px solid var(--neon-purple); background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1600');
-            background-size: cover; background-position: center;
+            border-bottom: 2px solid var(--neon-purple); background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1000&q=80');
+            background-size: cover; background-position: center; text-align: center; padding: 0 20px;
         }
-        .hero h1 { font-family: 'Orbitron'; font-size: 3.5rem; margin: 0; letter-spacing: 8px; color: #fff; animation: titlePulse 3s infinite ease-in-out; }
-        .hero p { color: var(--neon-cyan); font-weight: bold; letter-spacing: 4px; font-family: 'Orbitron'; font-size: 0.8rem; margin-top: 10px; }
+        .hero-logo { display: none; width: 60px; margin-bottom: 20px; border-radius: 50%; box-shadow: 0 0 20px var(--neon-cyan); }
+        .hero h1 { font-family: 'Orbitron'; font-size: 3.5rem; margin: 0; letter-spacing: 8px; color: #fff; animation: titlePulse 3s infinite ease-in-out; text-transform: uppercase; }
+        .hero p { color: var(--neon-cyan); font-weight: bold; letter-spacing: 4px; font-family: 'Orbitron'; font-size: 0.85rem; margin-top: 10px; text-transform: uppercase; }
 
         /* --- GRID & SEO --- */
         .main-content { margin-left: 70px; padding: 50px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
         
-        .tool-card { background: var(--glass); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-decoration: none; transition: 0.4s; }
-        .tool-card:hover { transform: translateY(-8px); border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); }
-        .tool-img { width: 100%; height: 130px; object-fit: cover; filter: brightness(0.4) grayscale(100%); transition: 0.5s; }
-        .tool-card:hover .tool-img { filter: brightness(0.8) grayscale(0%); }
-        .tool-body { padding: 15px; border-top: 1px solid var(--border); }
-        .tool-body h3 { font-family: 'Orbitron'; font-size: 0.95rem; color: #fff; margin: 0; }
-        .tool-body p { font-size: 0.7rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; margin: 5px 0 0 0; }
+        .tool-card { background: var(--glass); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-decoration: none; transition: 0.4s; position: relative; }
+        .tool-card:hover { transform: translateY(-8px); border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 242, 255, 0.15); }
+        .tool-img { width: 100%; height: 140px; object-fit: cover; filter: brightness(0.5) contrast(1.2) grayscale(80%); transition: 0.5s; }
+        .tool-card:hover .tool-img { filter: brightness(0.9) contrast(1.1) grayscale(0%); }
+        .tool-body { padding: 18px; border-top: 1px solid var(--border); background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.6)); position: relative; }
+        .tool-body h3 { font-family: 'Orbitron'; font-size: 1.1rem; color: #fff; margin: 0; text-shadow: 0 0 5px var(--neon-cyan); }
+        .tool-body p { font-size: 0.75rem; color: var(--neon-purple); font-weight: 700; text-transform: uppercase; margin: 8px 0 0 0; letter-spacing: 1px; }
 
         /* SEO BOX STYLING */
         .seo-terminal {
             grid-column: 1 / -1; background: rgba(188, 19, 254, 0.05); border: 1px dashed var(--neon-purple);
             padding: 40px; border-radius: 15px; margin: 20px 0; position: relative;
         }
-        .seo-terminal h2 { font-family: 'Orbitron'; color: var(--neon-cyan); margin-top: 0; font-size: 1.5rem; }
-        .seo-terminal p { color: #aaa; line-height: 1.7; font-size: 1rem; max-width: 900px; }
+        .seo-terminal h2 { font-family: 'Orbitron'; color: var(--neon-cyan); margin-top: 0; font-size: 1.5rem; text-transform: uppercase; }
+        .seo-terminal p { color: #aaa; line-height: 1.7; font-size: 1rem; max-width: 900px; margin-bottom: 10px; }
         .seo-terminal b { color: #fff; }
 
-        footer { margin-left: 70px; background: #000; padding: 40px; text-align: center; border-top: 1px solid var(--neon-purple); }
-        .footer-nav a { color: #fff; text-decoration: none; margin: 0 15px; font-family: 'Orbitron'; font-size: 0.7rem; }
+        /* --- FOOTER --- */
+        footer { margin-left: 70px; background: #000; padding: 60px 20px; text-align: center; border-top: 2px solid var(--neon-purple); position: relative; }
+        .footer-nav { margin-bottom: 30px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+        .footer-nav a { color: #fff; text-decoration: none; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; padding: 5px 15px; border: 1px solid transparent; border-radius: 20px; }
+        .footer-nav a:hover { color: var(--neon-cyan); border-color: var(--neon-cyan); background: rgba(0, 242, 255, 0.05); }
+        .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #555; font-size: 0.75rem; line-height: 1.6; font-family: 'Rajdhani'; }
 
-        @media (max-width: 768px) { .sidebar { display: none; } .hero, .main-content, footer { margin-left: 0; } }
+        @media (max-width: 768px) { 
+            .sidebar { display: none; } 
+            .hero, .main-content, footer { margin-left: 0; } 
+            .hero-logo { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="sidebar">
-        <div class="side-logo"><img src="http://googleusercontent.com/image_collection/image_retrieval/1703965455223718498_0" alt="Icon"></div>
+        <div class="side-logo">
+            <img src="[attachment_0](attachment)" alt="MathHub Neon Logo">
+        </div>
         <div style="margin-top:20px;">
             <a href="class10.html" class="nav-item"><i>💿</i> <span class="nav-label">CLASS 10 CAMPAIGN</span></a>
             <a href="class11.html" class="nav-item"><i>📡</i> <span class="nav-label">CLASS 11 MULTIPLAYER</span></a>
@@ -85,90 +106,65 @@
     </nav>
 
     <div class="hero">
+        <img src="[attachment_0](attachment)" alt="MathHub Pro" class="hero-logo">
         <h1>MATH HUB PRO</h1>
-        <p>ELITE 20 DEPLOYMENT | CLASS 10, 11, 12</p>
+        <p>ELITE 20 DEPLOYMENT | BOARD EXAMS 2026</p>
     </div>
 
     <div class="main-content">
         <div class="grid">
-            <a href="age.html" class="tool-card"><img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=400" class="tool-img"><div class="tool-body"><h3>Age Calculator</h3><p>Sync lifespan data.</p></div></a>
-            <a href="bmi.html" class="tool-card"><img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=400" class="tool-img"><div class="tool-body"><h3>BMI Tracker</h3><p>Agility stats.</p></div></a>
-            <a href="gst.html" class="tool-card"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400" class="tool-img"><div class="tool-body"><h3>GST Calculator</h3><p>Tax protocols.</p></div></a>
-            <a href="percentage.html" class="tool-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400" class="tool-img"><div class="tool-body"><h3>Percentage</h3><p>Score multipliers.</p></div></a>
-            <a href="unit.html" class="tool-card"><img src="https://images.unsplash.com/photo-1583316174775-bd6dc0e9f298?w=400" class="tool-img"><div class="tool-body"><h3>Unit Converter</h3><p>Protocol switch.</p></div></a>
-            <a href="trig.html" class="tool-card"><img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400" class="tool-img"><div class="tool-body"><h3>Trigonometry</h3><p>Angle targeting.</p></div></a>
+            <a href="age.html" class="tool-card"><img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Age Calculator</h3><p>Sync lifespan data.</p></div></a>
+            <a href="bmi.html" class="tool-card"><img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=400&q=80" class="tool-img"><div class="tool-body"><h3>BMI Tracker</h3><p>Agility stats.</p></div></a>
+            <a href="gst.html" class="tool-card"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80" class="tool-img"><div class="tool-body"><h3>GST Calculator</h3><p>Tax protocols.</p></div></a>
+            <a href="percentage.html" class="tool-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Percentage</h3><p>Score multipliers.</p></div></a>
+            <a href="unit.html" class="tool-card"><img src="https://images.unsplash.com/photo-1583316174775-bd6dc0e9f298?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Unit Converter</h3><p>Protocol switch.</p></div></a>
+            <a href="trig.html" class="tool-card"><img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Trigonometry</h3><p>Angle targeting.</p></div></a>
 
             <div class="seo-terminal">
                 <h2>ACADEMIC DOMINATION HUB</h2>
                 <p>Access the most comprehensive <b>Class 10 and Class 12 NCERT Solutions</b> designed for the 2026 Board Exams. MathHub Pro provides a tactical advantage with <b>CBSE Marking Schemes</b>, helping students achieve 100/100 through optimized mathematical precision and elite study resources.</p>
             </div>
 
-            <a href="calculus.html" class="tool-card"><img src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=400" class="tool-img"><div class="tool-body"><h3>Calculus Hub</h3><p>Elite integration.</p></div></a>
-            <a href="matrix.html" class="tool-card"><img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400" class="tool-img"><div class="tool-body"><h3>Matrix Solver</h3><p>Grid decryption.</p></div></a>
-            <a href="probability.html" class="tool-card"><img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400" class="tool-img"><div class="tool-body"><h3>Probability</h3><p>RNG odds.</p></div></a>
-            <a href="quadratic.html" class="tool-card"><img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400" class="tool-img"><div class="tool-body"><h3>Quadratic</h3><p>Solve Variable X.</p></div></a>
-            <a href="physics.html" class="tool-card"><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400" class="tool-img"><div class="tool-body"><h3>Ohm's Law</h3><p>Power protocols.</p></div></a>
-            <a href="binary.html" class="tool-card"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400" class="tool-img"><div class="tool-body"><h3>Binary Logic</h3><p>Bitwise OPS.</p></div></a>
-            <a href="base.html" class="tool-card"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400" class="tool-img"><div class="tool-body"><h3>Base Switcher</h3><p>Hex/Bin code.</p></div></a>
+            <a href="calculus.html" class="tool-card"><img src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Calculus Hub</h3><p>Elite integration.</p></div></a>
+            <a href="matrix.html" class="tool-card"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Matrix Solver</h3><p>Grid decryption.</p></div></a>
+            <a href="probability.html" class="tool-card"><img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Probability</h3><p>RNG odds.</p></div></a>
+            <a href="quadratic.html" class="tool-card"><img src="https://images.unsplash.com/photo-1632559646285-b9f44db1b138?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Quadratic Engine</h3><p>Solve Variable X.</p></div></a>
+            <a href="physics.html" class="tool-card"><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Ohm's Law</h3><p>Power protocols.</p></div></a>
+            <a href="binary.html" class="tool-card"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Binary Logic</h3><p>Bitwise OPS.</p></div></a>
+            <a href="base.html" class="tool-card"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Base Switcher</h3><p>Hex/Bin code.</p></div></a>
 
             <div class="seo-terminal">
                 <h2>ENGINEERING & COMPETITIVE LOGIC</h2>
                 <p>Master the complexities of <b>JEE Main and Advanced Mathematics</b> with our advanced toolkit. From <b>Matrix Inversion</b> to <b>Differential Calculus</b>, our platform serves as a high-speed command center for engineering aspirants across India. Level up your <b>Class 11 Multiplayer</b> prep today.</p>
             </div>
 
-            <a href="speed.html" class="tool-card"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400" class="tool-img"><div class="tool-body"><h3>Speed Calc</h3><p>Velocity stats.</p></div></a>
-            <a href="finance.html" class="tool-card"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400" class="tool-img"><div class="tool-body"><h3>Compound Int.</h3><p>Wealth growth.</p></div></a>
-            <a href="ncert.html" class="tool-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400" class="tool-img"><div class="tool-body"><h3>NCERT Solutions</h3><p>Campaign guides.</p></div></a>
-            <a href="formulas.html" class="tool-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400" class="tool-img"><div class="tool-body"><h3>Cheat Sheet</h3><p>Legendary data.</p></div></a>
-            <a href="pyq.html" class="tool-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400" class="tool-img"><div class="tool-body"><h3>Prev Papers</h3><p>Raid archives.</p></div></a>
-            <a href="graphs.html" class="tool-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400" class="tool-img"><div class="tool-body"><h3>Graph Plotter</h3><p>Visual mapping.</p></div></a>
-            <a href="timetable.html" class="tool-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400" class="tool-img"><div class="tool-body"><h3>Study Timer</h3><p>Focus active.</p></div></a>
+            <a href="speed.html" class="tool-card"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Speed Calc</h3><p>Velocity stats.</p></div></a>
+            <a href="finance.html" class="tool-card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Compound Int.</h3><p>Wealth growth.</p></div></a>
+            <a href="ncert.html" class="tool-card"><img src="https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?w=400&q=80" class="tool-img"><div class="tool-body"><h3>NCERT Solutions</h3><p>Campaign guides.</p></div></a>
+            <a href="formulas.html" class="tool-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Cheat Sheet</h3><p>Legendary data.</p></div></a>
+            <a href="pyq.html" class="tool-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Prev Papers</h3><p>Raid archives.</p></div></a>
+            <a href="graphs.html" class="tool-card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Graph Plotter</h3><p>Visual mapping.</p></div></a>
+            <a href="timetable.html" class="tool-card"><img src="https://images.unsplash.com/photo-1495364141860-b0d03eae1f26?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Study Timer</h3><p>Focus active.</p></div></a>
 
-            <div class="seo-terminal">
-                <h2>THE ELITE MATHEMATICAL ARCHIVE</h2>
-                <p>MathHub Pro is the definitive source for <b>Free Online Math Tools</b>. Our 19-year history of helping students has culminated in this <b>Elite 20 Deployment</b>. Whether you need an <b>Age Calculator</b> or a <b>Probability Engine</b>, we provide the highest-fidelity results for the 2026 academic cycle.</p>
+            <div class="seo-terminal" style="border-color: var(--neon-cyan);">
+                <h2 style="color: var(--neon-purple);">THE ELITE MATHEMATICAL ARCHIVE</h2>
+                <p>MathHub Pro is the definitive source for <b>Free Online Math Tools</b> in India. Our long history of helping students has culminated in this <b>Elite 20 Deployment</b>. Whether you need an <b>Age Calculator</b> or a <b>Probability Engine</b>, we provide the highest-fidelity mathematical results.</p>
+                <p style="color: var(--neon-cyan); font-weight: bold; font-family: 'Orbitron'; margin-top: 15px;">SYSTEM UPDATE: We are officially migrating to our new global .COM / .IN domain to ensure zero latency for the 2026 academic cycle.</p>
             </div>
         </div>
     </div>
 
-        <div class="main-content">
-        <div class="seo-terminal" style="border-style: solid; background: rgba(0, 242, 255, 0.02);">
-            <h2>MISSION CRITICAL: 2026 ACADEMIC DOMINATION</h2>
-            <p>
-                MathHub Pro is the ultimate command center for students navigating the <b>CBSE Class 10 and Class 12</b> landscape. 
-                Our <b>Elite 20 Deployment</b> provides specialized tools for <b>NCERT Mathematics</b>, including step-by-step 
-                <b>Class 12 Calculus Solutions</b>, <b>Class 10 Quadratic Solvers</b>, and <b>JEE Main Formula Cheat Sheets</b>. 
-            </p>
-            <p>
-                As we transition to our global <b>.com domain</b>, we remain committed to providing the fastest <b>Free Online Math Calculators</b> 
-                in India. From <b>Matrix Inversion</b> for engineering aspirants to <b>GST Calculations</b> for commerce students, 
-                every protocol is optimized for the <b>2026 Board Exam Marking Scheme</b>.
-            </p>
-            
-            <h3 style="font-family: 'Orbitron'; color: var(--neon-purple); font-size: 0.8rem; margin-top: 25px;">CORE CURRICULUM COVERAGE:</h3>
-            <ul style="column-count: 2; font-size: 0.8rem; color: #888; list-style: square; padding-left: 20px;">
-                <li><b>Class 10:</b> Real Numbers, Polynomials, Trigonometry, Statistics.</li>
-                <li><b>Class 11:</b> Sets, Relations, Conic Sections, Limits & Derivatives.</li>
-                <li><b>Class 12:</b> Matrices, Determinants, Integrals, Probability, Vector Algebra.</li>
-                <li><b>Competitive:</b> JEE Main PYQs, NEET Physics Tools, NTSE Logical Reasoning.</li>
-            </ul>
+    <footer>
+        <div class="footer-nav">
+            <a href="about.html">ABOUT US</a>
+            <a href="privacy.html">PRIVACY POLICY</a>
+            <a href="terms.html">TERMS OF USE</a>
+            <a href="contact.html">CONTACT SUPPORT</a>
         </div>
-    </div>
-
-    <footer style="margin-left: 70px; background: #000; padding: 60px 20px; border-top: 1px solid var(--neon-purple);">
-        <div class="footer-nav" style="margin-bottom: 30px;">
-            <a href="about.html">ABOUT HUB</a>
-            <a href="ncert.html">NCERT SOLUTIONS</a>
-            <a href="formulas.html">FORMULA ARCHIVE</a>
-            <a href="privacy.html">PRIVACY PROTOCOL</a>
-            <a href="contact.html">SUPPORT</a>
-        </div>
-        
-        <div style="max-width: 800px; margin: 0 auto; color: #444; font-size: 0.75rem; line-height: 1.6;">
-            <p>© 2026 MATH HUB PRO | POWERED BY ELITE 20 ENGINE</p>
-            <p>DISCLAIMER: This platform is an independent resource for CBSE and JEE aspirants. 
-            All NCERT solutions and mathematical protocols are designed for educational precision and tactical exam preparation.</p>
-            <p style="color: var(--neon-cyan); margin-top: 15px; letter-spacing: 2px;">STATUS: DOMAIN MIGRATION TO .COM IN PROGRESS...</p>
+        <div class="footer-disclaimer">
+            <p>© 2026 MATH HUB PRO | DEPLOYING ON NEW DOMAIN (.COM / .IN)</p>
+            <p style="margin-top: 10px;">DISCLAIMER: This platform is an independent digital resource designed for CBSE and JEE aspirants. 
+            All NCERT solutions, mathematical tools, and computational protocols are provided for educational precision and tactical exam preparation.</p>
         </div>
     </footer>
 
