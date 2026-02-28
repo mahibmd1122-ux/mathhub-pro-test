@@ -24,3 +24,39 @@
         .seo-terminal { margin-top: 40px; border-top: 1px solid #333; padding-top: 25px; color: #888; font-size: 0.95rem; line-height: 1.8; }
         .seo-terminal b { color: var(--neon-cyan); }
     </style>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">[ RETURN_TO_HUB ]</a>
+        <h1>QUADRATIC ENGINE</h1>
+        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <input type="number" id="qa" placeholder="a">
+            <input type="number" id="qb" placeholder="b">
+            <input type="number" id="qc" placeholder="c">
+        </div>
+        <button class="calc-btn" onclick="calc()">SOLVE VARIABLE X</button>
+        <div class="result-box" id="rb">
+            <label>ROOTS (x₁, x₂):</label>
+            <span class="big-output" id="out" style="font-size: 1.5rem;">--</span>
+        </div>
+        <div class="seo-terminal">
+            <h2>Solving Quadratic Equations for Class 10</h2>
+            <p>Analyze <b>Quadratic Equations (ax² + bx + c)</b> using the discriminant method. Get instant roots for your <b>NCERT Algebra</b> homework. A core tool for every student's tactical arsenal.</p>
+        </div>
+    </div>
+    <script>
+        function calc() {
+            let a = document.getElementById('qa').value;
+            let b = document.getElementById('qb').value;
+            let c = document.getElementById('qc').value;
+            let d = (b * b) - (4 * a * c);
+            if(d < 0) document.getElementById('out').innerText = "Imaginary Roots";
+            else {
+                let r1 = ((-b + Math.sqrt(d)) / (2 * a)).toFixed(2);
+                let r2 = ((-b - Math.sqrt(d)) / (2 * a)).toFixed(2);
+                document.getElementById('out').innerText = "x1: " + r1 + " | x2: " + r2;
+            }
+            document.getElementById('rb').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
