@@ -24,3 +24,30 @@
         .seo-terminal { margin-top: 40px; border-top: 1px solid #333; padding-top: 25px; color: #888; font-size: 0.95rem; line-height: 1.8; }
         .seo-terminal b { color: var(--neon-cyan); }
     </style>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">[ RETURN_TO_HUB ]</a>
+        <h1>COMPOUND INT.</h1>
+        <div class="input-group"><label>PRINCIPAL (P)</label><input type="number" id="p" placeholder="10000"></div>
+        <div class="input-group"><label>RATE % (R)</label><input type="number" id="r" placeholder="7"></div>
+        <div class="input-group"><label>TIME YRS (T)</label><input type="number" id="t" placeholder="5"></div>
+        <button class="calc-btn" onclick="calc()">GROW WEALTH</button>
+        <div class="result-box" id="rb"><label>TOTAL AMOUNT:</label><span class="big-output" id="out">--</span></div>
+        <div class="seo-terminal">
+            <h2>Financial Math for Commerce</h2>
+            <p>Analyze <b>Compound Interest (CI)</b> for Class 8 and Class 12 Economics. Understand the power of compounding for 2026 investments using our elite financial engine.</p>
+        </div>
+    </div>
+    [attachment_2](attachment)
+    <script>
+        function calc() {
+            let p = parseFloat(document.getElementById('p').value);
+            let r = parseFloat(document.getElementById('r').value) / 100;
+            let t = parseFloat(document.getElementById('t').value);
+            let a = p * Math.pow((1 + r), t);
+            document.getElementById('out').innerText = "₹" + a.toFixed(0);
+            document.getElementById('rb').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
