@@ -62,8 +62,22 @@
         
         .tool-card { background: var(--glass); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-decoration: none; transition: 0.4s; position: relative; }
         .tool-card:hover { transform: translateY(-8px); border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 242, 255, 0.15); }
-        .tool-img { width: 100%; height: 140px; object-fit: cover; filter: brightness(0.5) contrast(1.2) grayscale(80%); transition: 0.5s; }
-        .tool-card:hover .tool-img { filter: brightness(0.9) contrast(1.1) grayscale(0%); }
+                /* --- TOOL CARD IMAGES (FULL COLOR) --- */
+        .tool-img { 
+            width: 100%; 
+            height: 140px; 
+            object-fit: cover; 
+            /* PageSpeed Optimized: Compressed images with full color saturation */
+            filter: brightness(0.9) contrast(1.1) grayscale(0%); 
+            transition: 0.5s; 
+        }
+        
+        /* HOVER EFFECT: Maintains full color, slightly increases brightness for engagement */
+        .tool-card:hover .tool-img { 
+            filter: brightness(1.0) contrast(1.1) grayscale(0%); 
+        }
+
+
         .tool-body { padding: 18px; border-top: 1px solid var(--border); background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.6)); position: relative; }
         .tool-body h3 { font-family: 'Orbitron'; font-size: 1.1rem; color: #fff; margin: 0; text-shadow: 0 0 5px var(--neon-cyan); }
         .tool-body p { font-size: 0.75rem; color: var(--neon-purple); font-weight: 700; text-transform: uppercase; margin: 8px 0 0 0; letter-spacing: 1px; }
