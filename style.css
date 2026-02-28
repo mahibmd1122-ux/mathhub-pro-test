@@ -1,66 +1,171 @@
-::root {
-    --cbse-gold: #ffcc00;
-    --cbse-blue: #0056b3;
-    --bg-light: #fdfdfd;
+/* --- CORE SYSTEM VARIABLES --- */
+:root {
+    --neon-cyan: #00f2ff;
+    --neon-purple: #bc13fe;
+    --dark-core: #050505;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(0, 242, 255, 0.2);
 }
 
+/* --- ANIMATIONS --- */
+@keyframes gridMove {
+    from { background-position: 0 0; }
+    to { background-position: 50px 50px; }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px var(--neon-cyan); }
+    50% { box-shadow: 0 0 20px var(--neon-cyan); }
+}
+
+/* --- GLOBAL LAYOUT --- */
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: var(--bg-light);
+    padding: 0;
+    background: var(--dark-core);
+    color: #e0e0e0;
+    font-family: 'Rajdhani', sans-serif;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Consistent Background with Index */
+    background-image: 
+        linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 4s linear infinite;
 }
 
-/* Sidebar */
-.sidebar {
-    width: 65px; height: 100vh; background: #fff; border-right: 1px solid #eee;
-    position: fixed; transition: 0.3s; z-index: 2000; overflow: hidden;
-}
-.sidebar:hover { width: 260px; box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
-.nav-item { display: flex; align-items: center; padding: 18px 20px; text-decoration: none; color: #555; white-space: nowrap; }
-.nav-item:hover { background: #f0f7ff; color: var(--cbse-blue); }
-.nav-label { margin-left: 20px; opacity: 0; transition: 0.2s; }
-.sidebar:hover .nav-label { opacity: 1; }
-
-/* Main Wrapper */
-.main-wrapper { margin-left: 65px; }
-
-/* Hero Section (Image 2) */
-.hero {
-    height: 75vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600');
-    background-size: cover; background-position: center;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    color: white; text-align: center;
+/* --- TOOL CONTAINER (The Glass Terminal) --- */
+.tool-container {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--neon-purple);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
-/* Stats Section (Image 1) */
-.stats-bar {
-    background: #111; display: flex; justify-content: space-around;
-    padding: 50px 20px; color: white; text-align: center;
-}
-.stat-item h2 { color: var(--cbse-gold); font-size: 2.5rem; margin: 5px 0; }
-
-/* Tool Grid */
-.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 50px; }
-.tool-card { background: white; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; transition: 0.3s; }
-.tool-card:hover { transform: translateY(-8px); border-color: var(--cbse-gold); }
-.tool-img { width: 100%; height: 160px; object-fit: cover; }
-.tool-info { padding: 20px; }
-.tool-info h3 { color: var(--cbse-blue); margin: 0 0 10px 0; }
-.tool-info p { font-size: 0.85rem; color: #777; line-height: 1.5; }
-
-/* SEO Blocks */
-.seo-block { grid-column: 1 / -1; background: #f9f9f9; border-left: 5px solid var(--cbse-blue); padding: 40px; margin: 20px 0; }
-.seo-block h2 { color: var(--cbse-blue); margin-top: 0; }
-
-/* Study Banner Breaks */
-.study-banner {
-    grid-column: 1 / -1; height: 350px; background-attachment: fixed; background-size: cover;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    color: white; text-align: center; border-radius: 15px;
-    background-image: linear-gradient(rgba(0,86,179,0.7), rgba(0,86,179,0.7)), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1600');
+/* --- HEADER & BACK BUTTON --- */
+.tool-header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-footer { background: #111; color: white; padding: 50px; text-align: center; }
+.tool-header h1 {
+    font-family: 'Orbitron';
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: var(--neon-cyan);
+    font-family: 'Orbitron';
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* --- INPUT STYLING --- */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-family: 'Orbitron';
+    font-size: 0.75rem;
+    color: var(--neon-cyan);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+input, select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 12px;
+    color: #fff;
+    font-family: 'Rajdhani';
+    font-size: 1.1rem;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    background: rgba(0, 242, 255, 0.05);
+}
+
+/* --- ACTION BUTTON --- */
+.calc-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--neon-purple);
+    color: #fff;
+    padding: 15px;
+    font-family: 'Orbitron';
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.4s;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.calc-btn:hover {
+    background: var(--neon-purple);
+    box-shadow: 0 0 20px var(--neon-purple);
+    transform: translateY(-2px);
+}
+
+/* --- RESULT DISPLAY (The Output Terminal) --- */
+.result-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(0, 242, 255, 0.05);
+    border-left: 4px solid var(--neon-cyan);
+    display: none; /* Hidden until calculation */
+}
+
+.result-box h2 {
+    font-family: 'Orbitron';
+    font-size: 0.8rem;
+    margin: 0 0 10px 0;
+    color: var(--neon-cyan);
+}
+
+.result-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* --- FOOTER INFO --- */
+.status-bar {
+    margin-top: 25px;
+    font-size: 0.65rem;
+    color: #444;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
