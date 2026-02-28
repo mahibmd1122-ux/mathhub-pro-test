@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     
-    <link rel="preload" as="image" href="https://img.freepik.com/premium-vector/calculator-neon-icon-vector-illustration-design-website-advertising-promotion-banner-school-concept_98480-1915.jpg">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1000&q=80">
 
     <style>
         :root {
@@ -30,20 +30,69 @@
             background-size: 50px 50px; animation: gridMove 4s linear infinite;
         }
 
-        /* --- SIDEBAR --- */
+        /* --- SIDEBAR MASTER (SCROLLABLE & FLEXIBLE) --- */
         .sidebar {
-            width: 70px; height: 100vh; background: rgba(0, 0, 0, 0.95); border-right: 1px solid var(--neon-cyan);
-            position: fixed; transition: 0.4s; z-index: 1000; overflow: hidden; backdrop-filter: blur(15px);
+            width: 70px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.98);
+            border-right: 1px solid var(--neon-cyan);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column; /* Stacks Logo on top of Scroll Area */
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden; /* Prevents the main bar from showing scrollbars */
+            backdrop-filter: blur(15px);
         }
-        .sidebar:hover { width: 260px; box-shadow: 10px 0 30px rgba(0, 242, 255, 0.2); }
-        .side-logo { padding: 20px; border-bottom: 1px solid var(--border); text-align: center; background: rgba(0,0,0,0.5); }
-        /* Main Logo Styling */
-        .side-logo img { width: 50px; border-radius: 10px; filter: drop-shadow(0 0 10px var(--neon-cyan)); transition: 0.3s; }
-        .sidebar:hover .side-logo img { width: 80px; }
+
+        .sidebar:hover {
+            width: 270px;
+            box-shadow: 10px 0 30px rgba(0, 242, 255, 0.2);
+        }
+
+        .side-logo { 
+            padding: 20px; 
+            border-bottom: 1px solid var(--border); 
+            text-align: center; 
+            background: rgba(0,0,0,0.5); 
+        }
         
-        .nav-item { display: flex; align-items: center; padding: 20px; text-decoration: none; color: #888; transition: 0.3s; white-space: nowrap; }
+        .side-logo img { 
+            width: 45px; 
+            border-radius: 10px; 
+            filter: drop-shadow(0 0 10px var(--neon-cyan)); 
+            transition: 0.3s; 
+        }
+        
+        .sidebar:hover .side-logo img { width: 70px; }
+
+        /* --- THE SCROLL ENGINE --- */
+        .sidebar-scroll-area {
+            flex: 1; /* Takes up all space below the logo */
+            overflow-y: auto; /* Enables vertical scrolling */
+            overflow-x: hidden; /* Prevents side-shaking */
+            scrollbar-width: thin; 
+            scrollbar-color: var(--neon-cyan) transparent;
+        }
+
+        /* Webkit Scrollbar Styling */
+        .sidebar-scroll-area::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll-area::-webkit-scrollbar-track { background: transparent; }
+        .sidebar-scroll-area::-webkit-scrollbar-thumb {
+            background: var(--neon-cyan);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .nav-item { 
+            display: flex; align-items: center; padding: 18px 22px; 
+            text-decoration: none; color: #888; transition: 0.2s; white-space: nowrap; 
+        }
         .nav-item:hover { color: var(--neon-cyan); background: rgba(0, 242, 255, 0.1); }
-        .nav-label { margin-left: 25px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 1px; opacity: 0; }
+        .nav-item i { font-style: normal; font-size: 1.1rem; min-width: 25px; text-align: center; }
+        .nav-label { margin-left: 20px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 1px; opacity: 0; transition: 0.3s; }
         .sidebar:hover .nav-label { opacity: 1; }
 
         /* --- HERO --- */
@@ -56,33 +105,26 @@
         .hero h1 { font-family: 'Orbitron'; font-size: 3.5rem; margin: 0; letter-spacing: 8px; color: #fff; animation: titlePulse 3s infinite ease-in-out; text-transform: uppercase; }
         .hero p { color: var(--neon-cyan); font-weight: bold; letter-spacing: 4px; font-family: 'Orbitron'; font-size: 0.85rem; margin-top: 10px; text-transform: uppercase; }
 
-        /* --- GRID & SEO --- */
+        /* --- MAIN GRID --- */
         .main-content { margin-left: 70px; padding: 50px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
         
         .tool-card { background: var(--glass); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-decoration: none; transition: 0.4s; position: relative; }
         .tool-card:hover { transform: translateY(-8px); border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 242, 255, 0.15); }
-                /* --- TOOL CARD IMAGES (FULL COLOR) --- */
+        
+        /* FULL COLOR IMAGES FIX */
         .tool-img { 
-            width: 100%; 
-            height: 140px; 
-            object-fit: cover; 
-            /* PageSpeed Optimized: Compressed images with full color saturation */
+            width: 100%; height: 140px; object-fit: cover; 
             filter: brightness(0.9) contrast(1.1) grayscale(0%); 
             transition: 0.5s; 
         }
+        .tool-card:hover .tool-img { filter: brightness(1.0) contrast(1.1) grayscale(0%); }
         
-        /* HOVER EFFECT: Maintains full color, slightly increases brightness for engagement */
-        .tool-card:hover .tool-img { 
-            filter: brightness(1.0) contrast(1.1) grayscale(0%); 
-        }
-
-
         .tool-body { padding: 18px; border-top: 1px solid var(--border); background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.6)); position: relative; }
         .tool-body h3 { font-family: 'Orbitron'; font-size: 1.1rem; color: #fff; margin: 0; text-shadow: 0 0 5px var(--neon-cyan); }
         .tool-body p { font-size: 0.75rem; color: var(--neon-purple); font-weight: 700; text-transform: uppercase; margin: 8px 0 0 0; letter-spacing: 1px; }
 
-        /* SEO BOX STYLING */
+        /* --- SEO TERMINAL --- */
         .seo-terminal {
             grid-column: 1 / -1; background: rgba(188, 19, 254, 0.05); border: 1px dashed var(--neon-purple);
             padding: 40px; border-radius: 15px; margin: 20px 0; position: relative;
@@ -99,41 +141,7 @@
         .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #555; font-size: 0.75rem; line-height: 1.6; font-family: 'Rajdhani'; }
 
         @media (max-width: 768px) { 
-                    /* --- SIDEBAR (NOW SCROLLABLE) --- */
-        .sidebar {
-            width: 70px; 
-            height: 100vh; 
-            background: rgba(0, 0, 0, 0.95); 
-            border-right: 1px solid var(--neon-cyan);
-            position: fixed; 
-            transition: 0.4s; 
-            z-index: 1000; 
-            backdrop-filter: blur(15px);
-            
-            /* FIX: Enables vertical scrolling */
-            overflow-y: auto; 
-            overflow-x: hidden;
-        }
-
-        /* --- ELITE NEON SCROLLBAR --- */
-        /* This makes the scrollbar fit your 2026 theme */
-        .sidebar::-webkit-scrollbar {
-            width: 4px;
-        }
-        .sidebar::-webkit-scrollbar-track {
-            background: #000;
-        }
-        .sidebar::-webkit-scrollbar-thumb {
-            background: var(--neon-cyan);
-            border-radius: 10px;
-            box-shadow: 0 0 10px var(--neon-cyan);
-        }
-
-        .sidebar:hover { 
-            width: 260px; 
-            box-shadow: 10px 0 30px rgba(0, 242, 255, 0.2); 
-        }
-
+            .sidebar { display: none; } 
             .hero, .main-content, footer { margin-left: 0; } 
             .hero-logo { display: block; }
             .hero h1 { font-size: 2.2rem; }
@@ -143,29 +151,28 @@
 <body>
 
     <nav class="sidebar">
-                <div class="side-logo">
+        <div class="side-logo">
             <img src="https://img.freepik.com/premium-vector/calculator-neon-icon-vector-illustration-design-website-advertising-promotion-banner-school-concept_98480-1915.jpg" alt="MathHub Neon Logo">
         </div>
-        <div style="margin-top:20px;">
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>1️⃣</i> <span class="nav-label">CLASS 1 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>2️⃣</i> <span class="nav-label">CLASS 2 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>3️⃣</i> <span class="nav-label">CLASS 3 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>4️⃣</i> <span class="nav-label">CLASS 4 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>5️⃣</i> <span class="nav-label">CLASS 5 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>6️⃣</i> <span class="nav-label">CLASS 6 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>7️⃣</i> <span class="nav-label">CLASS 7 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>8️⃣</i> <span class="nav-label">CLASS 8 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>9️⃣</i> <span class="nav-label">CLASS 9 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>1️⃣0️⃣</i> <span class="nav-label">CLASS 10 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>1️⃣1️⃣</i> <span class="nav-label">CLASS 11 NCERT TEXTBOOK</span></a>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>1️⃣2️⃣</i> <span class="nav-label">CLASS 12 NCERT TEXTBOOK</span></a>
-            
-        </div>
 
+        <div class="sidebar-scroll-area">
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>1️⃣</i> <span class="nav-label">CLASS 1 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>2️⃣</i> <span class="nav-label">CLASS 2 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>3️⃣</i> <span class="nav-label">CLASS 3 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>4️⃣</i> <span class="nav-label">CLASS 4 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>5️⃣</i> <span class="nav-label">CLASS 5 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>6️⃣</i> <span class="nav-label">CLASS 6 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>7️⃣</i> <span class="nav-label">CLASS 7 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>8️⃣</i> <span class="nav-label">CLASS 8 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>9️⃣</i> <span class="nav-label">CLASS 9 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>🔟</i> <span class="nav-label">CLASS 10 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>🕚</i> <span class="nav-label">CLASS 11 NCERT</span></a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="nav-item"><i>🕛</i> <span class="nav-label">CLASS 12 NCERT</span></a>
+        </div>
     </nav>
 
     <div class="hero">
-        <img src="https://img.freepik.com/premium-vector/calculator-neon-icon-vector-illustration-design-website-advertising-promotion-banner-school-concept_98480-1915.jpg)" alt="MathHub Pro" class="hero-logo">
+        <img src="https://img.freepik.com/premium-vector/calculator-neon-icon-vector-illustration-design-website-advertising-promotion-banner-school-concept_98480-1915.jpg" alt="MathHub Pro" class="hero-logo">
         <h1>MATH HUB PRO</h1>
         <p>ELITE 20 DEPLOYMENT | BOARD EXAMS 2026</p>
     </div>
@@ -194,18 +201,18 @@
 
             <div class="seo-terminal">
                 <h2>ENGINEERING & COMPETITIVE LOGIC</h2>
-                <p>Master the complexities of <b>JEE Main and Advanced Mathematics</b> with our advanced toolkit. From <b>Matrix Inversion</b> to <b>Differential Calculus</b>, our platform serves as a high-speed command center for engineering aspirants across India. Level up your <b>Class 11 Multiplayer</b> prep today.</p>
+                <p>Master the complexities of <b>JEE Main and Advanced Mathematics</b> with our advanced toolkit. From <b>Matrix Inversion</b> to <b>Differential Calculus</b>, our platform serves as a high-speed command center for engineering aspirants across India. Level up your prep today.</p>
             </div>
 
             <a href="speed.html" class="tool-card"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Speed Calc</h3><p>Velocity stats.</p></div></a>
             <a href="finance.html" class="tool-card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Compound Int.</h3><p>Wealth growth.</p></div></a>
-            <a href="ncert.html" class="tool-card"><img src="https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?w=400&q=80" class="tool-img"><div class="tool-body"><h3>NCERT Solutions</h3><p>Campaign guides.</p></div></a>
+            <a href="ncert.html" class="tool-card"><img src="https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?w=400&q=80" class="tool-img"><div class="tool-body"><h3>NCERT Hub</h3><p>Campaign guides.</p></div></a>
             <a href="formulas.html" class="tool-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Cheat Sheet</h3><p>Legendary data.</p></div></a>
             <a href="pyq.html" class="tool-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Prev Papers</h3><p>Raid archives.</p></div></a>
             <a href="graphs.html" class="tool-card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Graph Plotter</h3><p>Visual mapping.</p></div></a>
             <a href="timetable.html" class="tool-card"><img src="https://images.unsplash.com/photo-1495364141860-b0d03eae1f26?w=400&q=80" class="tool-img"><div class="tool-body"><h3>Study Timer</h3><p>Focus active.</p></div></a>
 
-            <div class="seo-terminal" style="border-color: var(--neon-cyan);">
+            <div class="seo-terminal" style="border-color: var(--neon-cyan); background: rgba(0, 242, 255, 0.02);">
                 <h2 style="color: var(--neon-purple);">THE ELITE MATHEMATICAL ARCHIVE</h2>
                 <p>MathHub Pro is the definitive source for <b>Free Online Math Tools</b> in India. Our long history of helping students has culminated in this <b>Elite 20 Deployment</b>. Whether you need an <b>Age Calculator</b> or a <b>Probability Engine</b>, we provide the highest-fidelity mathematical results.</p>
                 <p style="color: var(--neon-cyan); font-weight: bold; font-family: 'Orbitron'; margin-top: 15px;">SYSTEM UPDATE: We are officially migrating to our new global .COM / .IN domain to ensure zero latency for the 2026 academic cycle.</p>
