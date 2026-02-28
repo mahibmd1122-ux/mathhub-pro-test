@@ -24,3 +24,36 @@
         .seo-terminal { margin-top: 40px; border-top: 1px solid #333; padding-top: 25px; color: #888; font-size: 0.95rem; line-height: 1.8; }
         .seo-terminal b { color: var(--neon-cyan); }
     </style>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">[ RETURN_TO_HUB ]</a>
+        <h1>MATRIX SOLVER</h1>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+            <input type="number" id="a1" placeholder="a">
+            <input type="number" id="a2" placeholder="b">
+            <input type="number" id="a3" placeholder="c">
+            <input type="number" id="a4" placeholder="d">
+        </div>
+        <button class="calc-btn" onclick="calc()">DECRYPT GRID</button>
+        <div class="result-box" id="rb">
+            <label>DETERMINANT |A|:</label>
+            <span class="big-output" id="out">--</span>
+        </div>
+        <div class="seo-terminal">
+            <h2>Matrix & Determinant Decryption</h2>
+            <p>Master <b>Class 12 NCERT Chapter 4</b> determinants instantly. Calculating the determinant is the first step in finding the <b>Inverse of a Matrix</b>. Essential for CBSE boards and JEE Mains.</p>
+        </div>
+    </div>
+    <script>
+        function calc() {
+            let a = document.getElementById('a1').value;
+            let b = document.getElementById('a2').value;
+            let c = document.getElementById('a3').value;
+            let d = document.getElementById('a4').value;
+            let det = (a * d) - (b * c);
+            document.getElementById('out').innerText = det;
+            document.getElementById('rb').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
