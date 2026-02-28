@@ -24,3 +24,28 @@
         .seo-terminal { margin-top: 40px; border-top: 1px solid #333; padding-top: 25px; color: #888; font-size: 0.95rem; line-height: 1.8; }
         .seo-terminal b { color: var(--neon-cyan); }
     </style>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">[ RETURN_TO_HUB ]</a>
+        <h1>SPEED CALC</h1>
+        <div class="input-group"><label>DISTANCE (KM)</label><input type="number" id="dist" placeholder="100"></div>
+        <div class="input-group"><label>TIME (HOURS)</label><input type="number" id="time" placeholder="2"></div>
+        <button class="calc-btn" onclick="calc()">CALC VELOCITY</button>
+        <div class="result-box" id="rb"><label>SPEED (KM/H):</label><span class="big-output" id="out">--</span></div>
+        <div class="seo-terminal">
+            <h2>Velocity Stats for Class 9 & 11 Physics</h2>
+            <p>Calculate <b>Average Speed</b> and <b>Velocity</b> for your Physics numericals. Use the distance-time protocol to verify Kinematics problems in NCERT Chapter 8.</p>
+        </div>
+    </div>
+    [attachment_1](attachment)
+    <script>
+        function calc() {
+            let d = document.getElementById('dist').value;
+            let t = document.getElementById('time').value;
+            if(!t || t == 0) return;
+            document.getElementById('out').innerText = (d / t).toFixed(2);
+            document.getElementById('rb').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
