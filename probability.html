@@ -24,3 +24,37 @@
         .seo-terminal { margin-top: 40px; border-top: 1px solid #333; padding-top: 25px; color: #888; font-size: 0.95rem; line-height: 1.8; }
         .seo-terminal b { color: var(--neon-cyan); }
     </style>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">[ RETURN_TO_HUB ]</a>
+        <h1>PROBABILITY ENGINE</h1>
+        <div class="input-group">
+            <label>TOTAL OUTCOMES (n)</label>
+            <input type="number" id="n" placeholder="10">
+        </div>
+        <div class="input-group">
+            <label>FAVORABLE OUTCOMES (f)</label>
+            <input type="number" id="f" placeholder="2">
+        </div>
+        <button class="calc-btn" onclick="calc()">CALCULATE ODDS</button>
+        <div class="result-box" id="rb">
+            <label>PROBABILITY P(A):</label>
+            <span class="big-output" id="out">--</span>
+        </div>
+        <div class="seo-terminal">
+            <h2>RNG Odds for Class 10 & 12</h2>
+            <p>Solve <b>Probability Numericals</b> with speed. From simple coin flips to complex <b>Bayes' Theorem</b> foundations, our engine provides the data you need for competitive math exams.</p>
+        </div>
+    </div>
+    <script>
+        function calc() {
+            let n = document.getElementById('n').value;
+            let f = document.getElementById('f').value;
+            if(!n || n == 0) return;
+            let p = (f / n).toFixed(4);
+            document.getElementById('out').innerText = p;
+            document.getElementById('rb').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
