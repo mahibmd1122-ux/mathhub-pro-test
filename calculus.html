@@ -24,3 +24,31 @@
         .seo-terminal { margin-top: 40px; border-top: 1px solid #333; padding-top: 25px; color: #888; font-size: 0.95rem; line-height: 1.8; }
         .seo-terminal b { color: var(--neon-cyan); }
     </style>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">[ RETURN_TO_HUB ]</a>
+        <h1>CALCULUS HUB</h1>
+        <div class="input-group">
+            <label>d/dx of xⁿ (ENTER n)</label>
+            <input type="number" id="p" placeholder="3">
+        </div>
+        <button class="calc-btn" onclick="calc()">DERIVE FUNCTION</button>
+        <div class="result-box" id="rb">
+            <label>RESULTING DERIVATIVE:</label>
+            <span class="big-output" id="out">--</span>
+        </div>
+        <div class="seo-terminal">
+            <h2>Elite Integration & Differentiation</h2>
+            <p>Prepare for <b>Class 12 Calculus</b> domination. Our tool simplifies the <b>Power Rule</b> and helps you verify <b>JEE Advanced</b> math problems. High-speed academic resources for the modern PCM student.</p>
+        </div>
+    </div>
+    <script>
+        function calc() {
+            let n = document.getElementById('p').value;
+            if(!n) return;
+            document.getElementById('out').innerText = n + "x^" + (n - 1);
+            document.getElementById('rb').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
