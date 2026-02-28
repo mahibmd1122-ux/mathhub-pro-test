@@ -99,7 +99,41 @@
         .footer-disclaimer { max-width: 800px; margin: 0 auto; color: #555; font-size: 0.75rem; line-height: 1.6; font-family: 'Rajdhani'; }
 
         @media (max-width: 768px) { 
-            .sidebar { display: none; } 
+                    /* --- SIDEBAR (NOW SCROLLABLE) --- */
+        .sidebar {
+            width: 70px; 
+            height: 100vh; 
+            background: rgba(0, 0, 0, 0.95); 
+            border-right: 1px solid var(--neon-cyan);
+            position: fixed; 
+            transition: 0.4s; 
+            z-index: 1000; 
+            backdrop-filter: blur(15px);
+            
+            /* FIX: Enables vertical scrolling */
+            overflow-y: auto; 
+            overflow-x: hidden;
+        }
+
+        /* --- ELITE NEON SCROLLBAR --- */
+        /* This makes the scrollbar fit your 2026 theme */
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background: #000;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--neon-cyan);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .sidebar:hover { 
+            width: 260px; 
+            box-shadow: 10px 0 30px rgba(0, 242, 255, 0.2); 
+        }
+
             .hero, .main-content, footer { margin-left: 0; } 
             .hero-logo { display: block; }
             .hero h1 { font-size: 2.2rem; }
