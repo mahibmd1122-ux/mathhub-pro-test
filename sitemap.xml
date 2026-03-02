@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url>
+    <loc>https://www.mathhub.pro/</loc>
+    <lastmod>2026-03-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <url><loc>https://www.mathhub.pro/gst.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/compound.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/cheat.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/speed.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/ncert.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/papers.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/graph.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/timer.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/calculus.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/matrix.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/probability.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/quadratic.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/ohms.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/binary.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/base.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/age.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/bmi.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/percentage.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/unit.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.mathhub.pro/trig.html</loc><changefreq>weekly</changefreq><priority>0.90</priority></url>
+
+  <url><loc>https://www.mathhub.pro/about.html</loc><changefreq>monthly</changefreq><priority>0.70</priority></url>
+  <url><loc>https://www.mathhub.pro/contact.html</loc><changefreq>monthly</changefreq><priority>0.70</priority></url>
+  <url><loc>https://www.mathhub.pro/terms.html</loc><changefreq>monthly</changefreq><priority>0.50</priority></url>
+  <url><loc>https://www.mathhub.pro/privacy.html</loc><changefreq>monthly</changefreq><priority>0.50</priority></url>
+
+</urlset>
