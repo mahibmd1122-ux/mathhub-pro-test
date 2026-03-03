@@ -114,15 +114,38 @@
 
 /* MOBILE RESPONSIVE OVERRIDE */
 @media (max-width: 768px) {
-    /* REMOVE 'display: none' from here */
-    .sidebar { 
-        display: flex; /* Change from none to flex */
-        left: -280px;  /* Hide it by shifting it left instead */
-        width: 280px;
+    .mobile-toggle { 
+        display: block; 
     }
+
+    .sidebar { 
+        display: flex; /* Ensures it exists */
+        left: -280px;  /* Hides it off-screen */
+        width: 280px;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* This allows the JS to slide it back to 0 */
     .sidebar.active {
-    left: 0 !important;
+        left: 0 !important;
+        box-shadow: 5px 0 30px rgba(0, 242, 255, 0.3);
+    }
+
+    /* Force full labels on mobile for better UX */
+    .sidebar.active .nav-label {
+        opacity: 1;
+    }
+
+    /* Reset margins for mobile layout */
+    .hero, .main-content, .big-seo-hub, footer { 
+        margin-left: 0 !important; 
+    }
+
+    .hero {
+        padding-top: 60px; /* Space for the MENU button */
+    }
 }
+
 
 
     /* This allows the JS to slide it back to 0 */
