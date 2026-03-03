@@ -114,9 +114,22 @@
 
 /* MOBILE RESPONSIVE OVERRIDE */
 @media (max-width: 768px) {
-    .mobile-toggle { 
-        display: block; /* Shows only on mobile phones */
+    /* REMOVE 'display: none' from here */
+    .sidebar { 
+        display: flex; /* Change from none to flex */
+        left: -280px;  /* Hide it by shifting it left instead */
+        width: 280px;
     }
+
+    /* This allows the JS to slide it back to 0 */
+    .sidebar.active {
+        left: 0;
+    }
+
+    .hero, .main-content, .big-seo-hub, footer { 
+        margin-left: 0; 
+    }
+}
 
     .sidebar {
         width: 260px;
