@@ -190,8 +190,9 @@
                     await signInWithEmailAndPassword(auth, email, password);
                     status.innerText = ">> ACCESS_GRANTED";
                     status.style.color = var(--neon-cyan);
-                    // Redirect to your main tools page after 1.5 seconds
-                    setTimeout(() => window.location.href = "index.html", 1500);
+                   // Change "index.html" to the name of your main dashboard file
+setTimeout(() => window.location.href = "index.html", 1500);
+
                 }
             } catch (error) {
                 // Simplified error messages for the UI
