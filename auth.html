@@ -29,7 +29,7 @@
         }
 
         .auth-card {
-            width: 100%;
+            width: 90%;
             max-width: 400px;
             padding: 40px;
             background: rgba(0, 0, 0, 0.9);
@@ -152,7 +152,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-        // CONFIGURATION: Using your provided credentials
         const firebaseConfig = {
             apiKey: "AIzaSyCyeLN2tzrst4KTPA6vbLArf6AVgb1PxDo",
             authDomain: "math-hub-123.firebaseapp.com",
@@ -166,7 +165,7 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        // Make function globally accessible for button clicks
+        // Global function for the buttons
         window.processAuth = async (actionType) => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -174,7 +173,7 @@
 
             if(!email || !password) {
                 status.innerText = "!! DATA_MISSING";
-                status.style.color = "var(--neon-purple)";
+                status.style.color = "#bc13fe"; 
                 return;
             }
 
@@ -185,20 +184,20 @@
                 if (actionType === 'signup') {
                     await createUserWithEmailAndPassword(auth, email, password);
                     status.innerText = ">> ACCOUNT_DEPLOYED";
-                    status.style.color = var(--neon-cyan);
+                    status.style.color = "#00f2ff"; 
+                    setTimeout(() => window.location.href = "index.html", 1500);
                 } else {
                     await signInWithEmailAndPassword(auth, email, password);
                     status.innerText = ">> ACCESS_GRANTED";
-                    status.style.color = var(--neon-cyan);
-                   // Change "index.html" to the name of your main dashboard file
-setTimeout(() => window.location.href = "index.html", 1500);
-
+                    status.style.color = "#00f2ff"; 
+                    setTimeout(() => window.location.href = "index.html", 1500);
                 }
             } catch (error) {
-                // Simplified error messages for the UI
+                console.error("Auth Error:", error.code);
+                // Convert errors like 'auth/email-already-in-use' to 'EMAIL_ALREADY_IN_USE'
                 const errorCode = error.code.replace('auth/', '').replace(/-/g, '_').toUpperCase();
                 status.innerText = "!! ERROR: " + errorCode;
-                status.style.color = "var(--neon-purple)";
+                status.style.color = "#bc13fe";
             }
         };
     </script>
