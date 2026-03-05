@@ -322,6 +322,48 @@
         }
     });
 </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+  // Using your specific keys
+  const firebaseConfig = {
+    apiKey: "AIzaSyCyeLN2tzrst4KTPA6vbLArf6AVgb1PxDo",
+    authDomain: "math-hub-123.firebaseapp.com",
+    projectId: "math-hub-123",
+    storageBucket: "math-hub-123.firebasestorage.app",
+    messagingSenderId: "649705586460",
+    appId: "1:649705586460:web:ce86e65db4bd6b275404d9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // 1. Monitor login status
+  onAuthStateChanged(auth, (user) => {
+    const authLinks = document.getElementById('auth-links');
+    const userLinks = document.getElementById('user-links');
+    const userDisplay = document.getElementById('user-display');
+
+    if (user) {
+      // User is signed in
+      authLinks.style.display = 'none';
+      userLinks.style.display = 'block';
+      userDisplay.innerText = `USER: ${user.email.split('@')[0].toUpperCase()}`;
+    } else {
+      // User is signed out
+      authLinks.style.display = 'block';
+      userLinks.style.display = 'none';
+    }
+  });
+
+  // 2. Logout function
+  window.logout = () => {
+    signOut(auth).then(() => {
+      window.location.reload(); // Refresh to update the drawer
+    });
+  };
+</script>
 
 
 </body>
