@@ -125,6 +125,14 @@
     box-shadow: 0 0 15px var(--neon-cyan);
     text-transform: uppercase;
 }
+<div class="mobile-nav"> 
+    <div id="auth-links-mobile">
+        <a href="auth.html" class="nav-item">SIGN_IN</a>
+    </div>
+    <div id="user-links-mobile" style="display:none;">
+        <a href="#" onclick="logout()" class="nav-item">LOG_OUT</a>
+    </div>
+</div>
 
 /* MOBILE RESPONSIVE OVERRIDE */
 @media (max-width: 768px) {
@@ -353,30 +361,54 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // 1. Monitor login status
-  onAuthStateChanged(auth, (user) => {
+ onAuthStateChanged(auth, (user) => {
+    // Desktop IDs
     const authLinks = document.getElementById('auth-links');
     const userLinks = document.getElementById('user-links');
-    const userDisplay = document.getElementById('user-display');
+    
+    // Mobile IDs (Add these to your mobile drawer HTML)
+    const authMobile = document.getElementById('auth-links-mobile');
+    const userMobile = document.getElementById('user-links-mobile');
 
     if (user) {
-      // User is signed in
-      authLinks.style.display = 'none';
-      userLinks.style.display = 'block';
-      userDisplay.innerText = `USER: ${user.email.split('@')[0].toUpperCase()}`;
+        if(authLinks) authLinks.style.display = 'none';
+        if(userLinks) userLinks.style.display = 'block';
+        
+        if(authMobile) authMobile.style.display = 'none';
+        if(userMobile) userMobile.style.display = 'block';
     } else {
-      // User is signed out
-      authLinks.style.display = 'block';
-      userLinks.style.display = 'none';
+        if(authLinks) authLinks.style.display = 'block';
+        if(userLinks) userLinks.style.display = 'none';
+        
+        if(authMobile) authMobile.style.display = 'block';
+        if(userMobile) userMobile.style.display = 'none';
     }
-  });
+});
+ // 1. Monitor login status
+  onAuthStateChanged(auth, (user) => {
+    // Desktop IDs
+    const authLinks = document.getElementById('auth-links');
+    const userLinks = document.getElementById('user-links');
+    
+    // Mobile IDs (Add these to your mobile drawer HTML)
+    const authMobile = document.getElementById('auth-links-mobile');
+    const userMobile = document.getElementById('user-links-mobile');
 
-  // 2. Logout function
-  window.logout = () => {
-    signOut(auth).then(() => {
-      window.location.reload(); // Refresh to update the drawer
-    });
-  };
+    if (user) {
+        if(authLinks) authLinks.style.display = 'none';
+        if(userLinks) userLinks.style.display = 'block';
+        
+        if(authMobile) authMobile.style.display = 'none';
+        if(userMobile) userMobile.style.display = 'block';
+    } else {
+        if(authLinks) authLinks.style.display = 'block';
+        if(userLinks) userLinks.style.display = 'none';
+        
+        if(authMobile) authMobile.style.display = 'block';
+        if(userMobile) userMobile.style.display = 'none';
+    }
+});
+
 </script>
 
 
