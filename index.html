@@ -8,12 +8,12 @@
         gtag('js', new Date());
         gtag('config', 'G-C5KMGS6VML');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8159480759292642" crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" href="https://img.freepik.com/premium-vector/calculator-neon-icon-vector-illustration-design-website-advertising-promotion-banner-school-concept_98480-1915.jpg">
-<link rel="apple-touch-icon" href="https://img.freepik.com/premium-vector/calculator-neon-icon-vector-illustration-design-website-advertising-promotion-banner-school-concept_98480-1915.jpg">
+    <link rel="apple-touch-icon" href="https://img.freepik.com/premium-vector/calculator-neon-icon-vector-illustration-design-website-advertising-promotion-banner-school-concept_98480-1915.jpg">
 
     <title>MathHub Pro | 20+ Free Math Tools & NCERT Solutions 2026</title>
     <meta name="description" content="Access 20+ elite math tools including Calculus solvers, GST calculators, and NCERT Class 1-12 solutions. Optimized for Telangana (Mancherial) and Global students.">
@@ -36,22 +36,21 @@
             background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
         }
-#auth-links, #user-links {
-    padding: 15px;
-    display: block; /* Ensure they aren't hidden by default */
-}
 
-.nav-item.neon-text {
-    color: var(--neon-cyan);
-    text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
-    display: block;
-    margin: 10px 0;
-    font-size: 0.9rem;
-    text-shadow: 0 0 5px var(--neon-cyan);
-}
+        /* AUTH BUTTONS STYLING */
+        #auth-links, #user-links {
+            padding: 10px 0;
+            display: block;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-item.neon-text {
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 5px var(--neon-cyan);
+            font-size: 0.8rem;
+        }
 
-        /* SIDEBAR */
+        /* SIDEBAR / DRAWER */
         .sidebar {
             width: 70px; height: 100vh; background: rgba(0, 0, 0, 0.95); border-right: 1px solid var(--neon-cyan);
             position: fixed; top: 0; left: 0; z-index: 1000; display: flex; flex-direction: column;
@@ -60,14 +59,16 @@
         .sidebar:hover { width: 280px; box-shadow: 10px 0 40px rgba(0, 242, 255, 0.1); }
         .side-logo { padding: 25px 15px; border-bottom: 1px solid var(--border); text-align: center; }
         .side-logo img { width: 40px; border-radius: 8px; filter: drop-shadow(0 0 10px var(--neon-cyan)); }
+        
         .sidebar-scroll-area { flex: 1; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
         .sidebar-scroll-area::-webkit-scrollbar { display: none; }
+        
         .nav-item { display: flex; align-items: center; padding: 20px 25px; text-decoration: none; color: #888; transition: 0.3s; white-space: nowrap; }
         .nav-item:hover { color: var(--neon-cyan); background: rgba(0, 242, 255, 0.08); }
         .nav-label { margin-left: 25px; font-family: 'Orbitron'; font-size: 0.75rem; letter-spacing: 1px; opacity: 0; }
         .sidebar:hover .nav-label { opacity: 1; }
 
-        /* HERO */
+        /* HERO SECTION */
         .hero {
             margin-left: 70px; height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80');
@@ -102,127 +103,55 @@
         footer { margin-left: 70px; padding: 50px; text-align: center; background: #000; }
         .footer-links a { color: #666; text-decoration: none; margin: 0 15px; font-family: 'Orbitron'; font-size: 0.7rem; }
 
-        @media (max-width: 992px) { .seo-container { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .hero, .main-content, .big-seo-hub, footer { margin-left: 0; }
+        /* MOBILE TOGGLE BUTTON */
+        .mobile-toggle {
+            display: none; position: fixed; top: 20px; right: 20px; z-index: 2000;
+            background: var(--neon-cyan); color: #000; border: none; padding: 12px 20px;
+            border-radius: 5px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer;
+            box-shadow: 0 0 15px var(--neon-cyan); text-transform: uppercase;
         }
-        /* MOBILE TOGGLE STYLING */
-.mobile-toggle {
-    display: none; /* Hidden by default on Desktop/iPad */
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 2000;
-    background: var(--neon-cyan);
-    color: #000;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-family: 'Orbitron';
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 15px var(--neon-cyan);
-    text-transform: uppercase;
-}
-<div class="mobile-nav"> 
-    <div id="auth-links-mobile">
-        <a href="auth.html" class="nav-item">SIGN_IN</a>
-    </div>
-    <div id="user-links-mobile" style="display:none;">
-        <a href="#" onclick="logout()" class="nav-item">LOG_OUT</a>
-    </div>
-</div>
 
-/* MOBILE RESPONSIVE OVERRIDE */
-@media (max-width: 768px) {
-    .mobile-toggle { 
-        display: block; 
-    }
+        /* MOBILE RESPONSIVE FIXES */
+        @media (max-width: 992px) { .seo-container { grid-template-columns: 1fr; } }
+        
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            
+            .sidebar { 
+                width: 280px; left: -280px; /* Hidden off-screen */
+                transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            }
+            .sidebar.active { 
+                left: 0; box-shadow: 5px 0 30px rgba(0, 242, 255, 0.3); 
+            }
+            .sidebar.active .nav-label { opacity: 1; }
 
-    .sidebar { 
-        display: flex; /* Ensures it exists */
-        left: -280px;  /* Hides it off-screen */
-        width: 280px;
-        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    /* This allows the JS to slide it back to 0 */
-    .sidebar.active {
-        left: 0 !important;
-        box-shadow: 5px 0 30px rgba(0, 242, 255, 0.3);
-    }
-
-    /* Force full labels on mobile for better UX */
-    .sidebar.active .nav-label {
-        opacity: 1;
-    }
-
-    /* Reset margins for mobile layout */
-    .hero, .main-content, .big-seo-hub, footer { 
-        margin-left: 0 !important; 
-    }
-
-    .hero {
-        padding-top: 60px; /* Space for the MENU button */
-    }
-}
-
-
-
-    /* This allows the JS to slide it back to 0 */
-    .sidebar.active {
-        left: 0;
-    }
-
-    .hero, .main-content, .big-seo-hub, footer { 
-        margin-left: 0; 
-    }
-}
-
-    .sidebar {
-        width: 260px;
-        left: -260px; /* Moves drawer off-screen to the left */
-        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    /* The "Active" state when you click the button */
-    .sidebar.active {
-        left: 0; /* Slides the drawer into view */
-        box-shadow: 5px 0 30px rgba(0, 242, 255, 0.3);
-    }
-
-    main { 
-        margin-left: 0 !important; 
-        padding-top: 80px; /* Adds space for the button */
-    }
-}
-
+            .hero, .main-content, .big-seo-hub, footer { margin-left: 0 !important; }
+            .hero { padding-top: 60px; }
+        }
     </style>
 </head>
 <body>
+    
     <button class="mobile-toggle" onclick="toggleMenu()">MENU</button>
 
-
- <nav class="sidebar" id="mainSidebar">
-
-
+    <nav class="sidebar" id="mainSidebar">
         <div class="side-logo">
             <img src="https://img.freepik.com/premium-vector/calculator-neon-icon-vector-illustration-design-website-advertising-promotion-banner-school-concept_98480-1915.jpg" alt="MathHub Pro Logo">
         </div>
-     <div id="auth-links">
-    <a href="auth.html" class="nav-item neon-text">SIGN_IN</a>
-    <a href="auth.html" class="nav-item neon-text">SIGN_UP</a>
-</div>
-<div id="user-links" style="display:none;">
-    <span id="user-display" class="nav-item" style="color: #bc13fe; font-size: 0.7rem;"></span>
-    <a href="#" onclick="logout()" class="nav-item neon-text">LOG_OUT</a>
-</div>
+        
+        <div id="auth-links">
+            <a href="auth.html" class="nav-item neon-text"><i>🔑</i><span class="nav-label">SIGN IN / UP</span></a>
+        </div>
+        <div id="user-links" style="display:none;">
+            <span class="nav-item" style="padding-bottom: 5px;"><i style="color:var(--neon-purple);">ID</i><span id="user-display" class="nav-label" style="color: var(--neon-purple);"></span></span>
+            <a href="#" onclick="logout()" class="nav-item neon-text" style="color: #ff4d4d; padding-top: 5px;"><i>🛑</i><span class="nav-label">LOG OUT</span></a>
+        </div>
 
         <div class="sidebar-scroll-area">
             <script>
                 for(let i=1; i<=12; i++) {
-                    document.write(`<a href="https://ncert.nic.in/textbook.php?ln=en" class="nav-item"><i>${i.toString().padStart(2, '0')}</i><span class="nav-label">CLASS ${i} NCERT TEXTBOOK</span></a>`);
+                    document.write(`<a href="https://ncert.nic.in/textbook.php?ln=en" class="nav-item"><i>${i.toString().padStart(2, '0')}</i><span class="nav-label">CLASS ${i} NCERT</span></a>`);
                 }
             </script>
         </div>
@@ -254,8 +183,8 @@
             <a href="probability.html" class="tool-card"><img src="https://images.unsplash.com/photo-1596495573826-39af730429ea?w=400" class="tool-img"><div class="tool-body"><h3>Probability</h3><p>RNG Odds</p></div></a>
 
             <div class="terminal" style="border-color: var(--neon-cyan);">
-                <h2>> SYSTEM_STATUS: DOMAIN_MIGRATION_READY</h2>
-                <p>Network status: <strong>Optimized for .COM / .IN relocation.</strong> All scientific tools—from Ohm's Law solvers to Binary Logic converters—are calibrated for 99.9% uptime for global academic traffic.</p>
+                <h2>> SYSTEM_STATUS: OPERATIONAL</h2>
+                <p>Network status: <strong>Optimized.</strong> All scientific tools—from Ohm's Law solvers to Binary Logic converters—are calibrated for 99.9% uptime for global academic traffic.</p>
             </div>
 
             <a href="quadratic.html" class="tool-card"><img src="https://images.unsplash.com/photo-1632516643720-e7f0d7e6a414?w=400" class="tool-img"><div class="tool-body"><h3>Quadratic Engine</h3><p>Solve Variable X</p></div></a>
@@ -281,7 +210,7 @@
             <div class="seo-box">
                 <h2>The Ultimate Math Hub for NCERT & Engineering</h2>
                 <p>
-                    MathHub Pro is designed for the modern student all over the world and beyond. We provide a full suite of <strong>NCERT Class 1-12 Solutions</strong>, including specialized notes for the for quick revision. Whether you are solving complex Calculus derivatives, calculating GST for a business, or plotting algebraic graphs, our platform provides instant, accurate results.
+                    MathHub Pro is designed for the modern student all over the world and beyond. We provide a full suite of <strong>NCERT Class 1-12 Solutions</strong>, including specialized notes for quick revision. Whether you are solving complex Calculus derivatives, calculating GST for a business, or plotting algebraic graphs, our platform provides instant, accurate results.
                 </p>
                 <div style="margin-top:20px;">
                     <span class="keyword-pill">NCERT SOLUTIONS</span>
@@ -311,106 +240,79 @@
         </div>
         <p style="color:#555; font-size:0.75rem; margin-top:20px; font-family: 'Orbitron'; letter-spacing: 1px;">© 2026 MATHHUB PRO | DEPLOYED FROM MANCHERIAL NODE</p>
     </footer>
+
     <script>
-    function toggleMenu() {
-        const sidebar = document.getElementById('mainSidebar');
-        const btn = document.querySelector('.mobile-toggle');
-        
-        // Toggle the 'active' class on the sidebar
-        sidebar.classList.toggle('active');
-        
-        // Visual feedback on the button
-        if(sidebar.classList.contains('active')) {
-            btn.innerHTML = 'CLOSE';
-            btn.style.background = 'var(--neon-purple)';
-            btn.style.boxShadow = '0 0 15px var(--neon-purple)';
-        } else {
-            btn.innerHTML = 'MENU';
-            btn.style.background = 'var(--neon-cyan)';
-            btn.style.boxShadow = '0 0 15px var(--neon-cyan)';
+        function toggleMenu() {
+            const sidebar = document.getElementById('mainSidebar');
+            const btn = document.querySelector('.mobile-toggle');
+            
+            sidebar.classList.toggle('active');
+            
+            if(sidebar.classList.contains('active')) {
+                btn.innerHTML = 'CLOSE';
+                btn.style.background = 'var(--neon-purple)';
+                btn.style.boxShadow = '0 0 15px var(--neon-purple)';
+            } else {
+                btn.innerHTML = 'MENU';
+                btn.style.background = 'var(--neon-cyan)';
+                btn.style.boxShadow = '0 0 15px var(--neon-cyan)';
+            }
         }
-    }
 
-    // Smart-Close: Closes the drawer if you tap the main screen
-    document.addEventListener('click', function(event) {
-        const sidebar = document.getElementById('mainSidebar');
-        const btn = document.querySelector('.mobile-toggle');
-        
-        if (window.innerWidth <= 768 && 
-            !sidebar.contains(event.target) && 
-            !btn.contains(event.target) && 
-            sidebar.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
-</script>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        // Smart-Close on Mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('mainSidebar');
+            const btn = document.querySelector('.mobile-toggle');
+            
+            if (window.innerWidth <= 768 && !sidebar.contains(event.target) && !btn.contains(event.target) && sidebar.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    </script>
 
-  // Using your specific keys
-  const firebaseConfig = {
-    apiKey: "AIzaSyCyeLN2tzrst4KTPA6vbLArf6AVgb1PxDo",
-    authDomain: "math-hub-123.firebaseapp.com",
-    projectId: "math-hub-123",
-    storageBucket: "math-hub-123.firebasestorage.app",
-    messagingSenderId: "649705586460",
-    appId: "1:649705586460:web:ce86e65db4bd6b275404d9"
-  };
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+        const firebaseConfig = {
+            apiKey: "AIzaSyCyeLN2tzrst4KTPA6vbLArf6AVgb1PxDo",
+            authDomain: "math-hub-123.firebaseapp.com",
+            projectId: "math-hub-123",
+            storageBucket: "math-hub-123.firebasestorage.app",
+            messagingSenderId: "649705586460",
+            appId: "1:649705586460:web:ce86e65db4bd6b275404d9"
+        };
 
- onAuthStateChanged(auth, (user) => {
-    // Desktop IDs
-    const authLinks = document.getElementById('auth-links');
-    const userLinks = document.getElementById('user-links');
-    
-    // Mobile IDs (Add these to your mobile drawer HTML)
-    const authMobile = document.getElementById('auth-links-mobile');
-    const userMobile = document.getElementById('user-links-mobile');
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
-    if (user) {
-        if(authLinks) authLinks.style.display = 'none';
-        if(userLinks) userLinks.style.display = 'block';
-        
-        if(authMobile) authMobile.style.display = 'none';
-        if(userMobile) userMobile.style.display = 'block';
-    } else {
-        if(authLinks) authLinks.style.display = 'block';
-        if(userLinks) userLinks.style.display = 'none';
-        
-        if(authMobile) authMobile.style.display = 'block';
-        if(userMobile) userMobile.style.display = 'none';
-    }
-});
- // 1. Monitor login status
-  onAuthStateChanged(auth, (user) => {
-    // Desktop IDs
-    const authLinks = document.getElementById('auth-links');
-    const userLinks = document.getElementById('user-links');
-    
-    // Mobile IDs (Add these to your mobile drawer HTML)
-    const authMobile = document.getElementById('auth-links-mobile');
-    const userMobile = document.getElementById('user-links-mobile');
+        // MONITOR LOGIN STATUS
+        onAuthStateChanged(auth, (user) => {
+            const authLinks = document.getElementById('auth-links');
+            const userLinks = document.getElementById('user-links');
+            const userDisplay = document.getElementById('user-display');
 
-    if (user) {
-        if(authLinks) authLinks.style.display = 'none';
-        if(userLinks) userLinks.style.display = 'block';
-        
-        if(authMobile) authMobile.style.display = 'none';
-        if(userMobile) userMobile.style.display = 'block';
-    } else {
-        if(authLinks) authLinks.style.display = 'block';
-        if(userLinks) userLinks.style.display = 'none';
-        
-        if(authMobile) authMobile.style.display = 'block';
-        if(userMobile) userMobile.style.display = 'none';
-    }
-});
+            if (user) {
+                // Hides Sign In, Shows User ID and Logout
+                if(authLinks) authLinks.style.display = 'none';
+                if(userLinks) userLinks.style.display = 'block';
+                if(userDisplay) userDisplay.innerText = user.email.split('@')[0].toUpperCase();
+            } else {
+                // Shows Sign In, Hides Logout
+                if(authLinks) authLinks.style.display = 'block';
+                if(userLinks) userLinks.style.display = 'none';
+            }
+        });
 
-</script>
-
+        // GLOBAL LOGOUT FUNCTION
+        window.logout = () => {
+            signOut(auth).then(() => {
+                window.location.reload(); 
+            }).catch((error) => {
+                console.error("Logout Error:", error);
+            });
+        };
+    </script>
 
 </body>
 </html>
