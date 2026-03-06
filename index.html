@@ -129,6 +129,17 @@
             .hero, .main-content, .big-seo-hub, footer { margin-left: 0 !important; }
             .hero { padding-top: 60px; }
         }
+        #toolSearch:focus {
+    border-color: var(--neon-purple) !important;
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.3) !important;
+    background: rgba(188, 19, 254, 0.05) !important;
+}
+
+#toolSearch::placeholder {
+    color: rgba(0, 242, 255, 0.3);
+    font-size: 0.7rem;
+}
+
     </style>
 </head>
 <body>
@@ -161,6 +172,13 @@
         <h1>MATHHUB PRO</h1>
         <p>ELITE 20 DEPLOYMENT | VERSION 2.0.26 ONLINE</p>
     </div>
+<div class="search-container" style="margin-left: 70px; padding: 20px 40px 0 40px;">
+    <div class="terminal-input-wrapper" style="position: relative; max-width: 600px;">
+        <span style="position: absolute; left: 15px; top: 12px; color: var(--neon-cyan); font-family: 'Orbitron';">></span>
+        <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="SEARCH_SYSTEM_PROTOCOLS..." 
+               style="width: 100%; padding: 12px 12px 12px 35px; background: rgba(0,242,255,0.05); border: 1px solid var(--neon-cyan); color: #fff; font-family: 'Orbitron'; outline: none; box-shadow: 0 0 10px rgba(0,242,255,0.1);">
+    </div>
+</div>
 
     <div class="main-content">
         <div class="grid">
@@ -241,6 +259,7 @@
         <p style="color:#555; font-size:0.75rem; margin-top:20px; font-family: 'Orbitron'; letter-spacing: 1px;">© 2026 MATHHUB PRO | DEPLOYED FROM MANCHERIAL NODE</p>
     </footer>
 
+
     <script>
         function toggleMenu() {
             const sidebar = document.getElementById('mainSidebar');
@@ -258,6 +277,25 @@
                 btn.style.boxShadow = '0 0 15px var(--neon-cyan)';
             }
         }
+function filterTools() {
+    let input = document.getElementById('toolSearch').value.toUpperCase();
+    let cards = document.getElementsByClassName('tool-card');
+    let terminals = document.getElementsByClassName('terminal'); // The SEO text boxes
+
+    for (let i = 0; i < cards.length; i++) {
+        let title = cards[i].getElementsByTagName('h3')[0].innerText;
+        if (title.toUpperCase().indexOf(input) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+
+    // Also hide the "Terminal" SEO boxes when searching to keep it clean
+    for (let j = 0; j < terminals.length; j++) {
+        terminals[j].style.display = input === "" ? "" : "none";
+    }
+}
 
         // Smart-Close on Mobile
         document.addEventListener('click', function(event) {
