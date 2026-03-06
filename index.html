@@ -178,6 +178,28 @@
     border-color: var(--neon-cyan);
     box-shadow: 0 0 20px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1);
 }
+.share-btn {
+    background: transparent;
+    border: 1px solid #25d366; /* WhatsApp Green */
+    color: #25d366;
+    padding: 10px 20px;
+    font-family: 'Orbitron';
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.share-btn:hover {
+    background: rgba(37, 211, 102, 0.1);
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+    transform: scale(1.05);
+}
 
     </style>
 </head>
@@ -204,6 +226,10 @@
                     document.write(`<a href="https://ncert.nic.in/textbook.php?ln=en" class="nav-item"><i>${i.toString().padStart(2, '0')}</i><span class="nav-label">CLASS ${i} NCERT TEXTBOOK</span></a>`);
                 }
             </script>
+            <button class="share-btn" onclick="deployLink()">
+    <i>📡</i> [DEPLOY_TO_WHATSAPP]
+</button>
+
         </div>
     </nav>
 
@@ -345,6 +371,16 @@ function filterTools() {
                 toggleMenu();
             }
         });
+        function deployLink() {
+    const siteUrl = window.location.href;
+    const message = `> ⚠️ INTEL_DROP: I'm using elite tools on MathHub Pro! %0A> 🛠️ ACCESS_GRANTED: ${siteUrl} %0A> 🛡️ Join the protocol now.`;
+    
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${message}`;
+    
+    // Opens WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+}
+
     </script>
 
     <script type="module">
