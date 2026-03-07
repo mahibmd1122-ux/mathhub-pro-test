@@ -33,29 +33,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "MathHub Pro Calculation Suite",
-  "operatingSystem": "Web",
-  "applicationCategory": "EducationalApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "INR"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Mahib",
-    "location": "Mancherial, Telangana"
-  }
-}
-</script>
-
-
-    <script type="application/ld+json">
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "MathHub Pro Calculation Suite",
+      "operatingSystem": "Web",
+      "applicationCategory": "EducationalApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Mahib",
+        "location": "Mancherial, Telangana"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "MathHub Pro",
@@ -77,6 +77,18 @@
     </script>
 
     <style>
+        /* MOBILE OVERFLOW FIXES */
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
         :root {
             --neon-cyan: #00f2ff;
             --neon-purple: #bc13fe;
@@ -86,7 +98,7 @@
         }
 
         body {
-            margin: 0; background: var(--dark-void); color: #e0e0e0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden;
+            background: var(--dark-void); color: #e0e0e0; font-family: 'Rajdhani', sans-serif;
             background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
         }
@@ -130,15 +142,6 @@
         }
         .hero h1 { font-family: 'Orbitron'; font-size: clamp(2rem, 8vw, 4rem); letter-spacing: 10px; color: #fff; text-shadow: 0 0 20px var(--neon-cyan); margin: 0; text-align: center;}
         .hero p { color: var(--neon-cyan); font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 5px; margin-top: 15px; text-align: center; }
-<section style="max-width: 1000px; margin: 60px auto; padding: 40px; background: rgba(255,255,255,0.02); border-left: 4px solid #bc13fe;">
-    <h2 style="font-family: 'Orbitron'; color: #bc13fe;">HYPER-ACCURATE COMPUTATION</h2>
-    <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8;">
-        MathHub Pro utilizes 2026 floating-point arithmetic standards to ensure that every result—from 
-        <strong>GST tax breakdowns</strong> to <strong>Complex Quadratic Roots</strong>—is verified against 
-        NCERT and international mathematical norms. Based in <strong>Mancherial</strong>, we provide 
-        educational utility tools that serve over 15+ academic and financial categories.
-    </p>
-</section>
 
         /* ELITE 20 GRID */
         .main-content { margin-left: 70px; padding: 40px; }
@@ -192,9 +195,17 @@
             }
             .sidebar.active .nav-label { opacity: 1; }
 
-            .hero, .main-content, .big-seo-hub, .mega-seo-terminal, footer { margin-left: 0 !important; }
+            .hero, .main-content, .big-seo-hub, .mega-seo-terminal, footer, .search-container { 
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+                box-sizing: border-box;
+            }
             .hero { padding-top: 60px; }
+            .terminal-input-wrapper { max-width: 100% !important; }
         }
+
         #toolSearch:focus {
             border-color: var(--neon-purple) !important;
             box-shadow: 0 0 20px rgba(188, 19, 254, 0.3) !important;
@@ -205,6 +216,7 @@
             color: rgba(0, 242, 255, 0.3);
             font-size: 0.7rem;
         }
+
         /* THE SCAN LINE ANIMATION */
         @keyframes scan-line {
             0% { top: -100%; }
@@ -213,7 +225,7 @@
 
         .tool-card {
             position: relative;
-            overflow: hidden; /* This keeps the laser inside the card */
+            overflow: hidden;
         }
 
         /* THE LASER BEAM */
@@ -227,7 +239,7 @@
             background: linear-gradient(
                 to bottom,
                 transparent,
-                rgba(0, 242, 255, 0.4), /* Neon Cyan Glow */
+                rgba(0, 242, 255, 0.4),
                 transparent
             );
             transition: none;
@@ -239,14 +251,9 @@
             animation: scan-line 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
-        /* EXTRA POLISH: GLOWING BORDER PULSE */
-        .tool-card:hover {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1);
-        }
         .share-btn {
             background: transparent;
-            border: 1px solid #25d366; /* WhatsApp Green */
+            border: 1px solid #25d366; 
             color: #25d366;
             padding: 10px 20px;
             font-family: 'Orbitron';
@@ -270,20 +277,19 @@
     </style>
 </head>
 <body>
-<nav style="background: rgba(0,0,0,0.8); border-bottom: 1px solid #00f2ff; padding: 15px 0; position: sticky; top: 0; z-index: 1000;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
-        <div style="font-family: 'Orbitron'; color: #00f2ff; font-weight: bold; font-size: 1.2rem;">MATHHUB_PRO</div>
-        <div style="display: flex; gap: 25px; font-family: 'Rajdhani'; font-weight: bold; text-transform: uppercase;">
+
+<nav style="background: rgba(0,0,0,0.95); border-bottom: 1px solid #00f2ff; padding: 10px 0; position: sticky; top: 0; z-index: 1000; width: 100%; box-sizing: border-box;">
+    <div style="width: 95%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div style="font-family: 'Orbitron'; color: #00f2ff; font-weight: bold; font-size: 1rem; letter-spacing: 1px;">MATHHUB_PRO</div>
+        <div style="display: flex; gap: 15px; font-family: 'Rajdhani'; font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">
             <a href="index.html" style="color: #fff; text-decoration: none;">Terminal</a>
             <a href="guides.html" style="color: #fff; text-decoration: none;">Math_Guides</a>
-            <a href="math-game.html" style="color: #bc13fe; text-decoration: none;">Matrix_Game</a>
+            <a href="game.html" style="color: #bc13fe; text-decoration: none;">Matrix_Game</a>
             <a href="contact.html" style="color: #fff; text-decoration: none;">Support</a>
         </div>
     </div>
 </nav>
 
-
-    
     <button class="mobile-toggle" onclick="toggleMenu()">MENU</button>
 
     <nav class="sidebar" id="mainSidebar">
@@ -315,12 +321,21 @@
         <h1>MATHHUB PRO</h1>
         <p>ELITE 20 DEPLOYMENT | VERSION 2.0.26 ONLINE</p>
     </div>
+
+    <section style="width: 90%; max-width: 1000px; margin: 40px auto; padding: 25px; background: rgba(255,255,255,0.02); border-left: 4px solid #bc13fe; box-sizing: border-box; position: relative; z-index: 10;">
+        <h2 style="font-family: 'Orbitron'; color: #bc13fe; font-size: 1.2rem; margin-top: 0;">HYPER-ACCURATE COMPUTATION</h2>
+        <p style="color: #aaa; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
+            MathHub Pro utilizes 2026 floating-point arithmetic standards to ensure that every result—from 
+            <strong>GST tax breakdowns</strong> to <strong>Complex Quadratic Roots</strong>—is verified against 
+            NCERT and international mathematical norms. Based in <strong>Mancherial</strong>.
+        </p>
+    </section>
     
     <div class="search-container" style="margin-left: 70px; padding: 20px 40px 0 40px;">
         <div class="terminal-input-wrapper" style="position: relative; max-width: 600px;">
             <span style="position: absolute; left: 15px; top: 12px; color: var(--neon-cyan); font-family: 'Orbitron';">></span>
             <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="SEARCH_SYSTEM_PROTOCOLS..." 
-                   style="width: 100%; padding: 12px 12px 12px 35px; background: rgba(0,242,255,0.05); border: 1px solid var(--neon-cyan); color: #fff; font-family: 'Orbitron'; outline: none; box-shadow: 0 0 10px rgba(0,242,255,0.1);">
+                   style="width: 100%; padding: 12px 12px 12px 35px; background: rgba(0,242,255,0.05); border: 1px solid var(--neon-cyan); color: #fff; font-family: 'Orbitron'; outline: none; box-shadow: 0 0 10px rgba(0,242,255,0.1); box-sizing: border-box;">
         </div>
     </div>
 
@@ -448,7 +463,7 @@
         function filterTools() {
             let input = document.getElementById('toolSearch').value.toUpperCase();
             let cards = document.getElementsByClassName('tool-card');
-            let terminals = document.getElementsByClassName('terminal'); // The SEO text boxes
+            let terminals = document.getElementsByClassName('terminal');
 
             for (let i = 0; i < cards.length; i++) {
                 let title = cards[i].getElementsByTagName('h3')[0].innerText;
@@ -459,7 +474,6 @@
                 }
             }
 
-            // Also hide the "Terminal" SEO boxes when searching to keep it clean
             for (let j = 0; j < terminals.length; j++) {
                 terminals[j].style.display = input === "" ? "" : "none";
             }
@@ -480,10 +494,8 @@
             
             const whatsappUrl = `https://api.whatsapp.com/send?text=${message}`;
             
-            // Opens WhatsApp in a new tab
             window.open(whatsappUrl, '_blank');
         }
-
     </script>
 
     <script type="module">
@@ -509,12 +521,10 @@
             const userDisplay = document.getElementById('user-display');
 
             if (user) {
-                // Hides Sign In, Shows User ID and Logout
                 if(authLinks) authLinks.style.display = 'none';
                 if(userLinks) userLinks.style.display = 'block';
                 if(userDisplay) userDisplay.innerText = user.email.split('@')[0].toUpperCase();
             } else {
-                // Shows Sign In, Hides Logout
                 if(authLinks) authLinks.style.display = 'block';
                 if(userLinks) userLinks.style.display = 'none';
             }
